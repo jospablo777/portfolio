@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>José P. Barrantes — ML Engineer & Data Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0d0d0d;
+    --bg-secondary: #161616;
+    --bg-card: #1a1a1a;
+    --bg-card-hover: #222222;
+    --text-primary: #f0ece4;
+    --text-secondary: #9a958d;
+    --text-muted: #5c5852;
+    --accent-red: #c0392b;
+    --accent-red-glow: rgba(192, 57, 43, 0.25);
+    --accent-orange: #e67e22;
+    --accent-warm: #d4a373;
+    --label-ml: #c0392b;
+    --label-data-eng: #2980b9;
+    --label-stats: #8e44ad;
+    --label-data-sci: #27ae60;
+    --label-mlops: #e67e22;
+    --label-api: #16a085;
+    --label-talk: #f39c12;
+    --border-subtle: rgba(240, 236, 228, 0.06);
+    --border-active: rgba(240, 236, 228, 0.15);
+    --radius: 12px;
+    --shadow-card: 0 4px 24px rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-card-hover: 0 12px 48px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.4);
+    --transition: 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-red) var(--bg-secondary);
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .nav-logo {
+    font-family: 'Space Mono', monospace; font-size: 0.85rem;
+    letter-spacing: 2px; color: var(--text-primary); text-transform: uppercase;
+  }
+  .nav-logo span { color: var(--accent-red); }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--text-secondary);
+    text-decoration: none; transition: color var(--transition); position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1.5px; background: var(--accent-red);
+    transition: width var(--transition);
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 6rem 3rem 4rem; position: relative; overflow: hidden;
+  }
+
+  .hero-bg-glow {
+    position: absolute; width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-red-glow) 0%, transparent 70%);
+    top: 10%; right: -10%; pointer-events: none;
+    animation: pulse 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse {
+    0% { opacity: 0.4; transform: scale(1); }
+    100% { opacity: 0.7; transform: scale(1.15); }
+  }
+
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    align-items: center; position: relative; z-index: 2;
+  }
+
+  .hero-text { animation: fadeSlideUp 1s ease-out both; }
+
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace; font-size: 0.75rem;
+    letter-spacing: 4px; text-transform: uppercase; color: var(--accent-red);
+    margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before { content: ''; width: 32px; height: 1.5px; background: var(--accent-red); }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 900; line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--text-primary) 60%, var(--accent-warm));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .hero-bio {
+    font-size: 1.05rem; color: var(--text-secondary); max-width: 500px;
+    margin-bottom: 2rem; font-weight: 300; line-height: 1.8;
+  }
+
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; }
+  .meta-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
+  .meta-item svg { width: 16px; height: 16px; stroke: var(--accent-red); fill: none; stroke-width: 2; }
+
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    padding: 0.85rem 2rem; background: var(--accent-red); color: var(--text-primary);
+    text-decoration: none; font-weight: 600; font-size: 0.85rem;
+    letter-spacing: 1px; text-transform: uppercase; border-radius: 6px;
+    transition: all var(--transition); border: none; cursor: pointer;
+  }
+  .hero-cta:hover { background: #a93226; transform: translateY(-2px); box-shadow: 0 8px 32px var(--accent-red-glow); }
+  .hero-cta svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; transition: transform var(--transition); }
+  .hero-cta:hover svg { transform: translateX(4px); }
+
+  .hero-right { display: flex; flex-direction: column; gap: 2rem; animation: fadeSlideUp 1s 0.3s ease-out both; }
+
+  .hero-photo-wrapper { position: relative; width: 100%; max-width: 380px; margin: 0 auto; }
+  .hero-photo {
+    width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%;
+    border-radius: var(--radius); border: 2px solid var(--border-subtle);
+    filter: saturate(0.85) contrast(1.05); transition: all var(--transition);
+  }
+  .hero-photo:hover { filter: saturate(1) contrast(1.05); border-color: var(--border-active); box-shadow: 0 16px 64px rgba(192,57,43,0.15); }
+  .hero-photo-wrapper::after {
+    content: ''; position: absolute; inset: 0; border-radius: var(--radius);
+    background: linear-gradient(180deg, transparent 50%, rgba(13,13,13,0.6) 100%);
+    pointer-events: none;
+  }
+
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .stat-card {
+    background: var(--bg-card); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius); padding: 1.4rem; transition: all var(--transition);
+  }
+  .stat-card:hover { border-color: var(--border-active); transform: translateY(-4px); box-shadow: var(--shadow-card); }
+  .stat-number { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--accent-red); line-height: 1; margin-bottom: 0.4rem; }
+  .stat-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; }
+
+  section { padding: 5rem 3rem; max-width: 1200px; margin: 0 auto; }
+  .section-header { margin-bottom: 3rem; }
+  .section-eyebrow {
+    font-family: 'Space Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 4px; text-transform: uppercase; color: var(--accent-red);
+    margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-eyebrow::before { content: ''; width: 24px; height: 1.5px; background: var(--accent-red); }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; line-height: 1.15; }
+  .section-subtitle { color: var(--text-secondary); font-size: 0.95rem; margin-top: 0.75rem; font-weight: 300; }
+
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; align-items: center; }
+  .filter-hint {
+    font-size: 0.75rem; color: var(--text-muted); font-family: 'Space Mono', monospace;
+    letter-spacing: 1px; text-transform: uppercase; margin-right: 0.75rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .filter-hint svg { width: 14px; height: 14px; stroke: var(--text-muted); fill: none; stroke-width: 2; }
+
+  .filter-btn {
+    padding: 0.45rem 1rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px;
+    border: 1.5px solid var(--border-subtle); border-radius: 100px; background: transparent;
+    color: var(--text-secondary); cursor: pointer; transition: all var(--transition);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .filter-btn:hover { border-color: var(--border-active); color: var(--text-primary); background: rgba(255,255,255,0.03); }
+  .filter-btn.active {
+    border-color: var(--active-color, var(--accent-red)); color: var(--text-primary);
+    background: var(--active-color, var(--accent-red));
+    box-shadow: 0 0 16px rgba(var(--glow-rgb, 192,57,43), 0.3);
+  }
+
+  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+  .project-card {
+    background: var(--bg-card); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius); padding: 2rem; transition: all var(--transition);
+    position: relative; overflow: hidden; cursor: default; animation: cardIn 0.6s ease-out both;
+  }
+  .project-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--card-accent, var(--accent-red)), transparent);
+    opacity: 0; transition: opacity var(--transition);
+  }
+  .project-card:hover { border-color: var(--border-active); transform: translateY(-8px); box-shadow: var(--shadow-card-hover); background: var(--bg-card-hover); }
+  .project-card:hover::before { opacity: 1; }
+  .project-card.hidden { display: none; }
+
+  @keyframes cardIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  .card-labels { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+  .card-label {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    padding: 0.25rem 0.65rem; border-radius: 4px;
+    background: rgba(var(--label-rgb), 0.12); color: var(--label-color);
+    border: 1px solid rgba(var(--label-rgb), 0.25);
+  }
+
+  .card-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem; line-height: 1.3; }
+  .card-year { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--text-muted); letter-spacing: 1.5px; margin-bottom: 1rem; }
+  .card-description { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.75; font-weight: 300; margin-bottom: 1.5rem; }
+
+  .card-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+  .tech-tag {
+    font-family: 'Space Mono', monospace; font-size: 0.65rem; padding: 0.2rem 0.55rem;
+    border-radius: 3px; background: rgba(240,236,228,0.04); color: var(--text-muted);
+    border: 1px solid rgba(240,236,228,0.06); letter-spacing: 0.5px;
+  }
+
+  .card-link {
+    display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem;
+    font-weight: 600; color: var(--accent-red); text-decoration: none;
+    letter-spacing: 0.5px; transition: all var(--transition);
+  }
+  .card-link svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; transition: transform var(--transition); }
+  .card-link:hover { color: var(--accent-orange); }
+  .card-link:hover svg { transform: translateX(4px); }
+
+  .card-links-row { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+
+  .talk-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: 'Space Mono', monospace; font-size: 0.65rem;
+    letter-spacing: 1px; text-transform: uppercase; color: var(--label-talk); margin-bottom: 1rem;
+  }
+  .talk-badge svg { width: 14px; height: 14px; stroke: var(--label-talk); fill: none; stroke-width: 2; }
+
+  .skills-mosaic { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.75rem; }
+  .skills-group { margin-bottom: 2.5rem; }
+  .skills-group:last-child { margin-bottom: 0; }
+  .skills-group-title {
+    font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--accent-red); margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-subtle);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .skills-group-title svg { width: 15px; height: 15px; stroke: var(--accent-red); fill: none; stroke-width: 2; }
+  .skill-tile {
+    background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 8px;
+    padding: 1.15rem 1.25rem; font-size: 0.82rem; font-weight: 500;
+    color: var(--text-secondary); transition: all var(--transition); position: relative; overflow: hidden;
+  }
+  .skill-tile::before {
+    content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+    background: var(--accent-red); opacity: 0; transition: opacity var(--transition);
+  }
+  .skill-tile:hover { border-color: var(--border-active); color: var(--text-primary); transform: translateX(4px); }
+  .skill-tile:hover::before { opacity: 1; }
+  .skill-tile .skill-cat {
+    font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--accent-red);
+    text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.35rem;
+  }
+
+  footer {
+    padding: 3rem; text-align: center; border-top: 1px solid var(--border-subtle);
+    color: var(--text-muted); font-size: 0.8rem;
+  }
+  footer .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.25rem; }
+  footer a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color var(--transition); font-size: 0.82rem; letter-spacing: 0.5px; }
+  footer a:hover { color: var(--accent-red); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-photo-wrapper { max-width: 280px; }
+    section { padding: 3.5rem 1.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .filter-bar { gap: 0.5rem; }
+  }
+  @media (max-width: 480px) {
+    .nav-links { display: none; }
+    .hero-stats { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">JP<span>.</span>Barrantes</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#talks">Talks</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero" id="about">
+  <div class="hero-bg-glow"></div>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-eyebrow">ML Engineer & Data Scientist</div>
+      <h1 class="hero-name">José P.<br>Barrantes</h1>
+      <p class="hero-bio">
+        Software engineering professional specializing in the complexities that data introduces to ML-enabled systems. Driven by deeper understanding of nature to improve decision-making and quantify results.
+      </p>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Costa Rica
+        </div>
+        <div class="meta-item">
+          <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          M.Sc. Computer Science · B.Sc. Biology
+        </div>
+        <div class="meta-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z"/></svg>
+          EN · ES
+        </div>
+      </div>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="#projects" class="hero-cta">
+          View Projects
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="JoseP_resume_2025.pdf" download class="hero-cta" style="background: transparent; border: 1.5px solid var(--accent-red); color: var(--accent-red);">
+          <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Resume PDF
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-photo-wrapper">
+        <img class="hero-photo" src="portfolio_pic.jpg" alt="José P. Barrantes">
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-number">8+</div>
+          <div class="stat-label">Years in Data</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Projects Shipped</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5</div>
+          <div class="stat-label">Industries</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">900+</div>
+          <div class="stat-label">Students Trained</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Projects ── -->
+<section id="projects">
+  <div class="section-header">
+    <div class="section-eyebrow">Portfolio</div>
+    <h2 class="section-title">Selected Projects</h2>
+    <p class="section-subtitle">A collection of work across ML engineering, data science, and analytics.</p>
+  </div>
+
+  <div class="filter-bar">
+    <span class="filter-hint">
+      <svg viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+      Filter
+    </span>
+    <button class="filter-btn active" data-filter="all" style="--active-color: var(--accent-red); --glow-rgb: 192,57,43;">All</button>
+    <button class="filter-btn" data-filter="ml-eng" style="--active-color: var(--label-ml); --glow-rgb: 192,57,43;">ML Eng</button>
+    <button class="filter-btn" data-filter="data-eng" style="--active-color: var(--label-data-eng); --glow-rgb: 41,128,185;">Data Eng</button>
+    <button class="filter-btn" data-filter="stats" style="--active-color: var(--label-stats); --glow-rgb: 142,68,173;">Stats</button>
+    <button class="filter-btn" data-filter="data-sci" style="--active-color: var(--label-data-sci); --glow-rgb: 39,174,96;">Data Science</button>
+    <button class="filter-btn" data-filter="mlops" style="--active-color: var(--label-mlops); --glow-rgb: 230,126,34;">MLOps</button>
+    <button class="filter-btn" data-filter="api" style="--active-color: var(--label-api); --glow-rgb: 22,160,133;">API</button>
+  </div>
+
+  <div class="projects-grid" id="projectsGrid">
+
+    <!-- Feature Store Workshop -->
+    <div class="project-card" data-labels="mlops,data-eng,ml-eng" style="--card-accent: var(--label-mlops); animation-delay: 0.05s;">
+      <div class="card-labels">
+        <span class="card-label" style="--label-rgb: 230,126,34; --label-color: var(--label-mlops);">MLOps</span>
+        <span class="card-label" style="--label-rgb: 41,128,185; --label-color: var(--label-data-eng);">Data Eng</span>
+        <span class="card-label" style="--label-rgb: 192,57,43; --label-color: var(--label-ml);">ML Eng</span>
+      </div>
+      <h3 class="card-title">Feature Store for Time-Series Forecasting</h3>
+      <div class="card-year">2025 · Workshop @ DataDay Monterrey</div>
+      <p class="card-description">
+        A hands-on workshop demonstrating how to build a feature store for time-series forecasting using Mage for orchestration and Feast as the feature store. Presented at DataDay 2025 in Monterrey, Mexico.
+      </p>
+      <div class="card-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Mage</span>
+        <span class="tech-tag">Feast</span>
+        <span class="tech-tag">Time Series</span>
+        <span class="tech-tag">Feature Store</span>
+      </div>
+      <div class="card-links-row">
+        <a href="https://github.com/jospablo777/time_series_feature_store" target="_blank" class="card-link">
+          GitHub
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://sg.com.mx/dataday/sessions/2025mty/construccion-de-un-feature-store-para-series-de-tiempo-con-mage-y-feast/" target="_blank" class="card-link">
+          Talk Page
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Data Pipeline -->
+    <div class="project-card" data-labels="data-eng" style="--card-accent: var(--label-data-eng); animation-delay: 0.1s;">
+      <div class="card-labels">
+        <span class="card-label" style="--label-rgb: 41,128,185; --label-color: var(--label-data-eng);">Data Eng</span>
+      </div>
+      <h3 class="card-title">High-Performance Analytics Pipeline</h3>
+      <div class="card-year">2025</div>
+      <p class="card-description">
+        An end-to-end data pipeline covering raw data ingestion to analytics and inference — a "full-stack data science" approach. Powered by Mage for orchestration, Polars for transformation, and DuckDB as the database system.
+      </p>
+      <div class="card-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Mage</span>
+        <span class="tech-tag">Polars</span>
+        <span class="tech-tag">DuckDB</span>
+        <span class="tech-tag">Socrata API</span>
+      </div>
+      <div class="card-links-row">
+        <a href="https://jospablo777.github.io/mage_duckdb_pipeline/data_pipeline_mage.html" target="_blank" class="card-link">
+          Read Article
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://github.com/jospablo777/mage_duckdb_pipeline" target="_blank" class="card-link">
+          GitHub
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ML Model API -->
+    <div class="project-card" data-labels="ml-eng,mlops,api" style="--card-accent: var(--label-api); animation-delay: 0.15s;">
+      <div class="card-labels">
+        <span class="card-label" style="--label-rgb: 192,57,43; --label-color: var(--label-ml);">ML Eng</span>
+        <span class="card-label" style="--label-rgb: 230,126,34; --label-color: var(--label-mlops);">MLOps</span>
+        <span class="card-label" style="--label-rgb: 22,160,133; --label-color: var(--label-api);">API</span>
+      </div>
+      <h3 class="card-title">ML Model API Microservice</h3>
+      <div class="card-year">2024</div>
+      <p class="card-description">
+        A machine-learning microservice predicting bike rentals using CatBoost regression. Implemented with FastAPI, containerized with Docker, and automated via a CI/CD pipeline with GitHub Actions. Accompanied by an open-source article.
+      </p>
+      <div class="card-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">FastAPI</span>
+        <span class="tech-tag">CatBoost</span>
+        <span class="tech-tag">Docker</span>
+        <span class="tech-tag">CI/CD</span>
+      </div>
+      <div class="card-links-row">
+        <a href="https://jospablo777.github.io/ml_model_api/bikesharing_api.html" target="_blank" class="card-link">
+          Read Article
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://github.com/jospablo777/ml_model_api" target="_blank" class="card-link">
+          GitHub
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Iowa Liquor Sales -->
+    <div class="project-card" data-labels="data-sci,stats" style="--card-accent: var(--label-data-sci); animation-delay: 0.2s;">
+      <div class="card-labels">
+        <span class="card-label" style="--label-rgb: 39,174,96; --label-color: var(--label-data-sci);">Data Science</span>
+        <span class="card-label" style="--label-rgb: 142,68,173; --label-color: var(--label-stats);">Stats</span>
+      </div>
+      <h3 class="card-title">Iowa Liquor Sales Analysis</h3>
+      <div class="card-year">2024</div>
+      <p class="card-description">
+        Exploratory data analysis on real open data from Iowa, emphasizing time series analysis and statistical inference. Demonstrated that inventory diversity increases sales and that alcohol consumption rose by at least 8% during the pandemic.
+      </p>
+      <div class="card-tech">
+        <span class="tech-tag">R</span>
+        <span class="tech-tag">Time Series</span>
+        <span class="tech-tag">Statistical Inference</span>
+        <span class="tech-tag">Visualization</span>
+      </div>
+      <div class="card-links-row">
+        <a href="https://jospablo777.github.io/iowa_liquor_sales_analysis/iowa_liquor_analysis.html" target="_blank" class="card-link">
+          Read Analysis
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://github.com/jospablo777/iowa_liquor_sales_analysis" target="_blank" class="card-link">
+          GitHub
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Real-time Fraud Prevention -->
+    <div class="project-card" data-labels="ml-eng,data-eng,mlops" style="--card-accent: var(--label-ml); animation-delay: 0.25s;">
+      <div class="card-labels">
+        <span class="card-label" style="--label-rgb: 192,57,43; --label-color: var(--label-ml);">ML Eng</span>
+        <span class="card-label" style="--label-rgb: 41,128,185; --label-color: var(--label-data-eng);">Data Eng</span>
+        <span class="card-label" style="--label-rgb: 230,126,34; --label-color: var(--label-mlops);">MLOps</span>
+      </div>
+      <h3 class="card-title">Real-Time Fraud Prevention System</h3>
+      <div class="card-year">2025</div>
+      <p class="card-description">
+        An end-to-end fraud prevention system combining real-time data ingestion, ML-driven scoring, and automated decision-making to detect and block fraudulent activity as it happens.
+      </p>
+      <div class="card-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Mage</span>
+        <span class="tech-tag">ML</span>
+        <span class="tech-tag">Real-time</span>
+        <span class="tech-tag">Fraud Detection</span>
+      </div>
+      <a href="https://github.com/jospablo777/fraud_prevention_mage" target="_blank" class="card-link">
+        View on GitHub
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- Ensemble Fraud Detection -->
+    <div class="project-card" data-labels="ml-eng,data-sci" style="--card-accent: var(--label-ml); animation-delay: 0.3s;">
+      <div class="card-labels">
+        <span class="card-label" style="--label-rgb: 192,57,43; --label-color: var(--label-ml);">ML Eng</span>
+        <span class="card-label" style="--label-rgb: 39,174,96; --label-color: var(--label-data-sci);">Data Science</span>
+      </div>
+      <h3 class="card-title">Ensemble Fraud Detection</h3>
+      <div class="card-year">2019</div>
+      <p class="card-description">
+        Python implementation of an ensemble methodology from a peer-reviewed paper. The prototype detects fraudulent instances at twice the sensitivity of naive approaches and performs four times better overall.
+      </p>
+      <div class="card-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Scikit-Learn</span>
+        <span class="tech-tag">Ensembles</span>
+        <span class="tech-tag">Fraud Detection</span>
+      </div>
+      <a href="https://github.com/jospablo777" target="_blank" class="card-link">
+        View on GitHub
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Talks ── -->
+<section id="talks">
+  <div class="section-header">
+    <div class="section-eyebrow">Speaking</div>
+    <h2 class="section-title">Talks & Workshops</h2>
+    <p class="section-subtitle">Sharing knowledge at conferences across Latin America.</p>
+  </div>
+
+  <div class="projects-grid">
+
+    <div class="project-card" style="--card-accent: var(--label-talk); animation-delay: 0.05s;">
+      <div class="talk-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        Conference Talk
+      </div>
+      <h3 class="card-title">Fraud Prevention, ML & Human-in-the-Loop Design</h3>
+      <div class="card-year">2026 · Nerdearla · Santiago, Chile 🇨🇱</div>
+      <p class="card-description">
+        Upcoming talk exploring the intersection of fraud prevention, machine learning, and human-in-the-loop software design patterns — keeping analysts in the loop for better outcomes.
+      </p>
+      <div class="card-tech">
+        <span class="tech-tag">Fraud Prevention</span>
+        <span class="tech-tag">ML</span>
+        <span class="tech-tag">ML-enabled Systems</span>
+        <span class="tech-tag">Software Architecture</span>
+        <span class="tech-tag">HITL</span>
+        <span class="tech-tag">Design Patterns</span>
+      </div>
+      <a href="https://nerdearla.com/chile/schedule/prevencion-de-fraude-machine-learning-y-patrones-de-diseno-manten-a-tus-analistas-en-el-loop/" target="_blank" class="card-link">
+        View Schedule
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="project-card" style="--card-accent: var(--label-talk); animation-delay: 0.1s;">
+      <div class="talk-badge">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        Workshop
+      </div>
+      <h3 class="card-title">Feature Store for Time-Series Forecasting</h3>
+      <div class="card-year">2025 · DataDay · Monterrey, Mexico 🇲🇽</div>
+      <p class="card-description">
+        A hands-on workshop guiding participants through building a feature store for time-series forecasting with Mage and Feast.
+      </p>
+      <div class="card-tech">
+        <span class="tech-tag">Mage</span>
+        <span class="tech-tag">Feast</span>
+        <span class="tech-tag">Feature Store</span>
+        <span class="tech-tag">Time Series</span>
+      </div>
+      <div class="card-links-row">
+        <a href="https://github.com/jospablo777/time_series_feature_store" target="_blank" class="card-link">
+          Workshop Materials
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://sg.com.mx/dataday/sessions/2025mty/construccion-de-un-feature-store-para-series-de-tiempo-con-mage-y-feast/" target="_blank" class="card-link">
+          Talk Page
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Skills ── -->
+<section id="skills">
+  <div class="section-header">
+    <div class="section-eyebrow">Toolkit</div>
+    <h2 class="section-title">Skills & Technologies</h2>
+  </div>
+  <!-- Statistics -->
+  <div class="skills-group">
+    <div class="skills-group-title">
+      <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+      Statistics & Analytics
+    </div>
+    <div class="skills-mosaic">
+      <div class="skill-tile"><div class="skill-cat">Inference</div>Bayesian Data Analysis</div>
+      <div class="skill-tile"><div class="skill-cat">Inference</div>Statistical Inference</div>
+      <div class="skill-tile"><div class="skill-cat">Inference</div>Causal Inference</div>
+      <div class="skill-tile"><div class="skill-cat">Time</div>Time Series Analysis</div>
+      <div class="skill-tile"><div class="skill-cat">Design</div>A/B Testing</div>
+      <div class="skill-tile"><div class="skill-cat">Viz</div>Data Visualization</div>
+      <div class="skill-tile"><div class="skill-cat">Viz</div>Data Storytelling</div>
+      <div class="skill-tile"><div class="skill-cat">Tools</div>Tableau</div>
+      <div class="skill-tile"><div class="skill-cat">Tools</div>Superset</div>
+      <div class="skill-tile"><div class="skill-cat">Tools</div>QuickSight</div>
+    </div>
+  </div>
+
+  <!-- Machine Learning -->
+  <div class="skills-group">
+    <div class="skills-group-title">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      Machine Learning
+    </div>
+    <div class="skills-mosaic">
+      <div class="skill-tile"><div class="skill-cat">Framework</div>PyTorch</div>
+      <div class="skill-tile"><div class="skill-cat">Framework</div>TensorFlow / Keras</div>
+      <div class="skill-tile"><div class="skill-cat">Framework</div>Scikit-Learn</div>
+      <div class="skill-tile"><div class="skill-cat">Method</div>Regression & Classification</div>
+      <div class="skill-tile"><div class="skill-cat">Method</div>Ensemble Methods</div>
+      <div class="skill-tile"><div class="skill-cat">Method</div>Deep Learning</div>
+      <div class="skill-tile"><div class="skill-cat">Method</div>Dimensionality Reduction</div>
+      <div class="skill-tile"><div class="skill-cat">Practice</div>Model Validation</div>
+      <div class="skill-tile"><div class="skill-cat">Practice</div>Interpretable ML</div>
+      <div class="skill-tile"><div class="skill-cat">Practice</div>Performance Metrics</div>
+    </div>
+  </div>
+
+  <!-- MLOps & Software Architecture -->
+  <div class="skills-group">
+    <div class="skills-group-title">
+      <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      MLOps & Software Architecture
+    </div>
+    <div class="skills-mosaic">
+      <div class="skill-tile"><div class="skill-cat">Platform</div>ML Platform Design</div>
+      <div class="skill-tile"><div class="skill-cat">Orchestration</div>Mage</div>
+      <div class="skill-tile"><div class="skill-cat">Registry</div>MLFlow</div>
+      <div class="skill-tile"><div class="skill-cat">Feature</div>Feast (Feature Store)</div>
+      <div class="skill-tile"><div class="skill-cat">Serving</div>Model Serving & Monitoring</div>
+      <div class="skill-tile"><div class="skill-cat">API</div>FastAPI</div>
+      <div class="skill-tile"><div class="skill-cat">CI/CD</div>GitHub Actions</div>
+      <div class="skill-tile"><div class="skill-cat">Practice</div>Microservices</div>
+      <div class="skill-tile"><div class="skill-cat">Method</div>Agile / Scrum</div>
+    </div>
+  </div>
+
+  <!-- Linux & Infrastructure -->
+  <div class="skills-group">
+    <div class="skills-group-title">
+      <svg viewBox="0 0 24 24"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
+      Linux & Infrastructure
+    </div>
+    <div class="skills-mosaic">
+      <div class="skill-tile"><div class="skill-cat">OS</div>Linux (Ubuntu, Mint, CentOS)</div>
+      <div class="skill-tile"><div class="skill-cat">OS</div>macOS (BSD / Darwin)</div>
+      <div class="skill-tile"><div class="skill-cat">Shell</div>Bash / Z shell</div>
+      <div class="skill-tile"><div class="skill-cat">Container</div>Docker</div>
+      <div class="skill-tile"><div class="skill-cat">Container</div>Kubernetes</div>
+      <div class="skill-tile"><div class="skill-cat">VCS</div>Git</div>
+      <div class="skill-tile"><div class="skill-cat">Cloud</div>AWS</div>
+      <div class="skill-tile"><div class="skill-cat">Cloud</div>Oracle Cloud</div>
+    </div>
+  </div>
+
+  <!-- Fraud Prevention & Security -->
+  <div class="skills-group">
+    <div class="skills-group-title">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Fraud Prevention & Security
+    </div>
+    <div class="skills-mosaic">
+      <div class="skill-tile"><div class="skill-cat">Domain</div>Fraud Analytics</div>
+      <div class="skill-tile"><div class="skill-cat">Domain</div>Risk Assessment</div>
+      <div class="skill-tile"><div class="skill-cat">Domain</div>Cybersecurity</div>
+      <div class="skill-tile"><div class="skill-cat">Pattern</div>Real-time Detection</div>
+      <div class="skill-tile"><div class="skill-cat">Pattern</div>Human-in-the-Loop</div>
+      <div class="skill-tile"><div class="skill-cat">Industry</div>Fintech</div>
+    </div>
+  </div>
+
+  <!-- Databases & Data Engineering -->
+  <div class="skills-group">
+    <div class="skills-group-title">
+      <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      Databases & Data Engineering
+    </div>
+    <div class="skills-mosaic">
+      <div class="skill-tile"><div class="skill-cat">SQL</div>PostgreSQL / PostGIS</div>
+      <div class="skill-tile"><div class="skill-cat">SQL</div>T-SQL / MS SQL Server</div>
+      <div class="skill-tile"><div class="skill-cat">SQL</div>Oracle</div>
+      <div class="skill-tile"><div class="skill-cat">OLAP</div>DuckDB</div>
+      <div class="skill-tile"><div class="skill-cat">OLAP</div>ClickHouse</div>
+      <div class="skill-tile"><div class="skill-cat">OLAP</div>Athena</div>
+      <div class="skill-tile"><div class="skill-cat">NoSQL</div>MongoDB</div>
+      <div class="skill-tile"><div class="skill-cat">Transform</div>Polars</div>
+      <div class="skill-tile"><div class="skill-cat">Transform</div>Pandas / NumPy</div>
+    </div>
+  </div>
+
+  <!-- Programming Languages -->
+  <div class="skills-group">
+    <div class="skills-group-title">
+      <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Programming Languages
+    </div>
+    <div class="skills-mosaic">
+      <div class="skill-tile"><div class="skill-cat">Fluent</div>Python</div>
+      <div class="skill-tile"><div class="skill-cat">Fluent</div>R</div>
+      <div class="skill-tile"><div class="skill-cat">Fluent</div>SQL (ANSI, T-SQL)</div>
+    </div>
+  </div>
+
+  <!-- Domain Expertise -->
+  <div class="skills-group">
+    <div class="skills-group-title">
+      <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      Domain Expertise
+    </div>
+    <div class="skills-mosaic">
+      <div class="skill-tile"><div class="skill-cat">Science</div>Bioinformatics</div>
+      <div class="skill-tile"><div class="skill-cat">Science</div>Computational Biology</div>
+      <div class="skill-tile"><div class="skill-cat">Science</div>Scientific Computing</div>
+      <div class="skill-tile"><div class="skill-cat">Business</div>Marketing Analytics</div>
+      <div class="skill-tile"><div class="skill-cat">Business</div>Business Intelligence</div>
+      <div class="skill-tile"><div class="skill-cat">Health</div>Clinical Data</div>
+      <div class="skill-tile"><div class="skill-cat">Finance</div>Financial Data</div>
+      <div class="skill-tile"><div class="skill-cat">Spatial</div>QGIS / PostGIS</div>
+      <div class="skill-tile"><div class="skill-cat">Teaching</div>Technical Education</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contact ── -->
+<section id="contact">
+  <div class="section-header">
+    <div class="section-eyebrow">Get in touch</div>
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-subtitle">Open to collaborations, interesting problems, and good coffee.</p>
+  </div>
+  <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+    <a href="mailto:jospablo777@gmail.com" class="hero-cta" style="font-size: 0.8rem;">
+      <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Email Me
+    </a>
+    <a href="https://github.com/jospablo777" target="_blank" class="hero-cta" style="font-size: 0.8rem; background: transparent; border: 1.5px solid var(--accent-red); color: var(--accent-red);">
+      <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      GitHub
+    </a>
+    <a href="https://www.linkedin.com/in/jose-barrantes/" target="_blank" class="hero-cta" style="font-size: 0.8rem; background: transparent; border: 1.5px solid var(--accent-red); color: var(--accent-red);">
+      <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="mailto:jospablo777@gmail.com">jospablo777@gmail.com</a>
+    <a href="https://www.linkedin.com/in/jose-barrantes/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/jospablo777" target="_blank">GitHub</a>
+  </div>
+  <p>&copy; 2025 José P. Barrantes. Built with care and caffeine.</p>
+</footer>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('#projectsGrid .project-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+
+      cards.forEach((card, i) => {
+        const labels = card.dataset.labels ? card.dataset.labels.split(',') : [];
+        const show = filter === 'all' || labels.includes(filter);
+        if (show) {
+          card.classList.remove('hidden');
+          card.style.animation = 'none';
+          card.offsetHeight;
+          card.style.animation = `cardIn 0.45s ${i * 0.06}s ease-out both`;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollInto
