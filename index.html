@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>José P. Barrantes — ML Engineer & Data Scientist</title>
+<link rel="icon" type="image/png" href="thumbnail.png">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -333,7 +334,7 @@
       <div class="hero-eyebrow">ML Engineer & Data Scientist</div>
       <h1 class="hero-name">José P.<br>Barrantes</h1>
       <p class="hero-bio">
-        Software engineering professional specializing in the complexities that data introduces to ML-enabled systems. Driven by deeper understanding of nature to improve decision-making and quantify results.
+        ML Engineer and Data Scientist bridging the gap between complex models and real-world impact. I build ML platforms, data pipelines, and predictive systems - but not everything needs deep learning. I reach for Bayesian modeling, causal inference, or a well-crafted visualization when the problem calls for it.
       </p>
       <div class="hero-meta">
         <div class="meta-item">
@@ -806,7 +807,7 @@
     <p class="section-subtitle">Open to collaborations, interesting problems, and good coffee.</p>
   </div>
   <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-    <a href="mailto:jospablo777@gmail.com" class="hero-cta" style="font-size: 0.8rem;">
+    <a id="emailCta" href="#" class="hero-cta" style="font-size: 0.8rem;">
       <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       Email Me
     </a>
@@ -823,13 +824,25 @@
 
 <footer>
   <div class="footer-links">
-    <a href="mailto:jospablo777@gmail.com">jospablo777@gmail.com</a>
+    <a id="emailFooter" href="#">email</a>
     <a href="https://www.linkedin.com/in/jose-barrantes/" target="_blank">LinkedIn</a>
     <a href="https://github.com/jospablo777" target="_blank">GitHub</a>
   </div>
   <p>&copy; 2025 José P. Barrantes. Built with care and caffeine.</p>
 </footer>
 
+<script>
+  // Construct email links at runtime to prevent proxy obfuscation
+  (function() {
+    var u = 'jospablo777';
+    var d = 'gmail.com';
+    var addr = u + '@' + d;
+    var cta = document.getElementById('emailCta');
+    var ft = document.getElementById('emailFooter');
+    if (cta) cta.href = 'mail' + 'to:' + addr;
+    if (ft) { ft.href = 'mail' + 'to:' + addr; ft.textContent = addr; }
+  })();
+</script>
 <script>
   const filterBtns = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('#projectsGrid .project-card');
@@ -849,14 +862,4 @@
           card.offsetHeight;
           card.style.animation = `cardIn 0.45s ${i * 0.06}s ease-out both`;
         } else {
-          card.classList.add('hidden');
-        }
-      });
-    });
-  });
-
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) target.scrollInto
+          ca
