@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════
-   José P. Barrantes — Portfolio Scripts
+   José P. Barrantes - Portfolio Scripts
    ═══════════════════════════════════════════════ */
 
 /* ── Email obfuscation (anti-scraper) ── */
