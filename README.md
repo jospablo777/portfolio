@@ -7,10 +7,15 @@ Personal portfolio website showcasing ML engineering, data science, and analytic
 ## Structure
 
 ```
-index.html           # Main page
-portfolio_pic.jpg    # Profile photo
-thumbnail.png        # Favicon
-JoseP_resume_2025.pdf # Downloadable resume
+portfolio/
+├── index.html              # Markup
+├── css/
+│   └── styles.css          # Styles
+├── js/
+│   └── main.js             # Behavior
+├── favicon.png
+├── portfolio_pic.jpg
+└── JoseP_resume_2025.pdf   # Resume to download
 ```
 
 ## Built with
