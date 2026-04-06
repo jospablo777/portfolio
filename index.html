@@ -142,21 +142,23 @@
     </div>
 
     <!-- Data Pipeline -->
-    <div class="project-card" data-labels="data-eng" style="--card-accent: var(--label-data-eng); animation-delay: 0.1s;">
+    <div class="project-card" data-labels="data-eng,data-sci" style="--card-accent: var(--label-data-eng); animation-delay: 0.1s;">
       <div class="card-labels">
         <span class="card-label" style="--label-rgb: 41,128,185; --label-color: var(--label-data-eng);">Data Eng</span>
+        <span class="card-label" style="--label-rgb: 39,174,96; --label-color: var(--label-data-sci);">Data Science</span>
       </div>
       <h3 class="card-title">High-Performance Analytics Pipeline</h3>
       <div class="card-year">2025</div>
       <p class="card-description">
-        An end-to-end data pipeline covering raw data ingestion to analytics and inference: a "full-stack data science" approach. Powered by Mage for orchestration, Polars for transformation, and DuckDB as the database system.
+        End-to-end data pipeline on Iowa Liquor Sales (30M+ rows) covering the full data lifecycle: concurrent ingestion from the SODA API, transformation with Polars, persistent storage in DuckDB, geospatial analytics in R, and time-series forecasting with sktime. Accompanied by a hands-on tutorial article.
       </p>
       <div class="card-tech">
-        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Data Engineering</span>
         <span class="tech-tag">Mage</span>
         <span class="tech-tag">Polars</span>
         <span class="tech-tag">DuckDB</span>
-        <span class="tech-tag">Socrata API</span>
+        <span class="tech-tag">R</span>
+        <span class="tech-tag">sktime</span>
       </div>
       <div class="card-links-row">
         <a href="https://jospablo777.github.io/mage_duckdb_pipeline/data_pipeline_mage.html" target="_blank" class="card-link">
