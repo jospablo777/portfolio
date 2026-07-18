@@ -15,7 +15,7 @@ portfolio/
 │   └── main.js             # Behavior
 ├── favicon.png
 ├── portfolio_pic.jpg
-└── JoseP_resume_2025.pdf   # Resume to download
+└── JoseP_resume_2026.pdf   # Resume to download
 ```
 
 ## Built with
