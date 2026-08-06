@@ -17,7 +17,7 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
 
 /* ── Scroll reveal (cards, headers, skills, stats) ── */
 const revealTargets = document.querySelectorAll(
-  '.project-card, .section-header, .skills-group, .stat-card, .filter-bar'
+  '.project-card, .section-header, .skills-group, .stat-card, .filter-bar, .timeline-item, .pub-item'
 );
 revealTargets.forEach(el => el.classList.add('reveal'));
 
@@ -76,10 +76,16 @@ revealTargets.forEach((el, i) => {
 const filterBtns = document.querySelectorAll('.filter-btn');
 const cards = document.querySelectorAll('#projectsGrid .project-card');
 
+const filterStatus = document.querySelector('.filter-status');
+
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
+    filterBtns.forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
     const filter = btn.dataset.filter;
     let shown = 0;
 
@@ -98,6 +104,12 @@ filterBtns.forEach(btn => {
         card.classList.add('hidden');
       }
     });
+
+    if (filterStatus) {
+      filterStatus.textContent = filter === 'all'
+        ? `Showing all ${shown} projects`
+        : `Showing ${shown} ${shown === 1 ? 'project' : 'projects'} in ${btn.textContent.trim()}`;
+    }
   });
 });
 
