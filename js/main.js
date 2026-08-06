@@ -5,8 +5,9 @@
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ── Theme switch ──────────────────────────────
-   The initial theme is resolved by the inline script in <head> (before first
-   paint). This only handles toggling and remembering the choice. */
+   Dark is the default for every visitor. The inline script in <head> applies it
+   before first paint; the OS `prefers-color-scheme` is deliberately ignored.
+   This only handles toggling to light and remembering that choice. */
 (function () {
   const root = document.documentElement;
   const btn = document.querySelector('.theme-toggle');
@@ -38,12 +39,6 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
       try { localStorage.setItem('theme', next); } catch (e) { /* private mode */ }
     });
   }
-
-  // Follow the OS only while the visitor has not made an explicit choice
-  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
-    try { if (localStorage.getItem('theme')) return; } catch (err) { /* ignore */ }
-    apply(e.matches ? 'light' : 'dark');
-  });
 })();
 
 /* ── Email obfuscation (anti-scraper) ── */

@@ -8,14 +8,14 @@
 <meta name="author" content="José P. Barrantes">
 <meta name="theme-color" content="#0d0d0d">
 <link rel="canonical" href="https://jospablo777.github.io/portfolio/">
-<!-- Resolve the theme before first paint so there is no flash of the wrong one. -->
+<!-- Dark is the default for everyone. Light is opt-in through the nav toggle and
+     is remembered per visitor. Runs before first paint so a visitor who chose
+     light does not see a flash of dark. -->
 <script>
 (function () {
   var t;
   try { t = localStorage.getItem('theme'); } catch (e) {}
-  if (t !== 'light' && t !== 'dark') {
-    t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-  }
+  if (t !== 'light') t = 'dark';
   document.documentElement.setAttribute('data-theme', t);
   var m = document.querySelector('meta[name="theme-color"]');
   if (m) m.setAttribute('content', t === 'light' ? '#faf8f5' : '#0d0d0d');

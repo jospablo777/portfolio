@@ -18,11 +18,13 @@ robots.txt / sitemap.xml
 - **Adding a project:** copy a `.project-card` block in `#projects`. Set `data-labels`
   to a comma-separated subset of `ml-eng, data-eng, stats, data-sci, mlops, api`
   so the filter picks it up, and set `--card-accent` to the matching label colour.
-- **Themes:** dark is the default; light lives in the `:root[data-theme='light']`
-  block. The inline script in `<head>` resolves the theme *before first paint*
-  (`localStorage.theme`, else the OS `prefers-color-scheme`), so there is no flash
-  of the wrong theme. Keep it inline and keep it first. Without JS the site stays
-  dark by design. Any new colour needs a value in **both** token blocks.
+- **Themes:** dark is the default for **every** visitor; light lives in the
+  `:root[data-theme='light']` block and is opt-in through the nav toggle, then
+  remembered in `localStorage.theme`. The OS `prefers-color-scheme` is ignored on
+  purpose, so the site always opens dark. The inline script in `<head>` applies the
+  stored choice *before first paint*, so a visitor who picked light sees no flash
+  of dark. Keep it inline and keep it first. Without JS the site stays dark, same
+  as the default. Any new colour needs a value in **both** token blocks.
 - **Colours:** all tokens live at the top of `css/styles.css`, in two blocks (dark,
   light). Two variants per accent: `--label-x` for fills, rules and 3px accents;
   `--label-x-text` for anything you actually read. The plain variants fail WCAG AA
