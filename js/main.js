@@ -4,6 +4,48 @@
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/* ── Theme switch ──────────────────────────────
+   The initial theme is resolved by the inline script in <head> (before first
+   paint). This only handles toggling and remembering the choice. */
+(function () {
+  const root = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  const meta = document.querySelector('meta[name="theme-color"]');
+  const BAR = { light: '#faf8f5', dark: '#0d0d0d' };
+
+  function apply(theme) {
+    root.setAttribute('data-theme', theme);
+    if (meta) meta.setAttribute('content', BAR[theme]);
+    if (btn) {
+      const next = theme === 'light' ? 'dark' : 'light';
+      btn.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+      btn.setAttribute('aria-label', `Switch to ${next} theme`);
+      btn.title = `Switch to ${next} theme`;
+    }
+  }
+
+  apply(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      // Cross-fade colours only, so the switch does not read as a page reload
+      if (!reducedMotion) {
+        root.classList.add('theme-anim');
+        setTimeout(() => root.classList.remove('theme-anim'), 320);
+      }
+      apply(next);
+      try { localStorage.setItem('theme', next); } catch (e) { /* private mode */ }
+    });
+  }
+
+  // Follow the OS only while the visitor has not made an explicit choice
+  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+    try { if (localStorage.getItem('theme')) return; } catch (err) { /* ignore */ }
+    apply(e.matches ? 'light' : 'dark');
+  });
+})();
+
 /* ── Email obfuscation (anti-scraper) ── */
 (function () {
   var u = 'jospablo777';
@@ -29,11 +71,10 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-revealTargets.forEach((el, i) => {
+revealTargets.forEach(el => {
   // Small stagger between siblings inside the same parent
   const siblings = Array.from(el.parentElement.children).filter(c => c.classList.contains('reveal'));
-  const idx = siblings.indexOf(el);
-  el.style.setProperty('--reveal-delay', `${Math.min(idx, 6) * 0.07}s`);
+  el.style.setProperty('--reveal-delay', `${Math.min(siblings.indexOf(el), 6) * 0.07}s`);
   revealObserver.observe(el);
 });
 
@@ -75,7 +116,6 @@ revealTargets.forEach((el, i) => {
 /* ── Project filter buttons ── */
 const filterBtns = document.querySelectorAll('.filter-btn');
 const cards = document.querySelectorAll('#projectsGrid .project-card');
-
 const filterStatus = document.querySelector('.filter-status');
 
 filterBtns.forEach(btn => {
@@ -127,18 +167,30 @@ if (!reducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').ma
 /* ── Mobile navigation ── */
 const nav = document.querySelector('nav');
 const navToggle = document.querySelector('.nav-toggle');
+
+function closeMobileNav() {
+  if (!nav || !nav.classList.contains('nav-open')) return;
+  nav.classList.remove('nav-open');
+  if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+}
+
 if (navToggle) {
   navToggle.addEventListener('click', () => {
     const open = nav.classList.toggle('nav-open');
     navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-}
 
-function closeMobileNav() {
-  if (nav.classList.contains('nav-open')) {
-    nav.classList.remove('nav-open');
-    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
-  }
+  // Escape closes the menu and returns focus to the control that opened it
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape' || !nav.classList.contains('nav-open')) return;
+    closeMobileNav();
+    navToggle.focus();
+  });
+
+  // Tapping anywhere outside the open menu dismisses it
+  document.addEventListener('click', e => {
+    if (nav.classList.contains('nav-open') && !nav.contains(e.target)) closeMobileNav();
+  });
 }
 
 /* ── Smooth scroll for anchor links ── */
@@ -171,20 +223,28 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   sections.forEach(s => spyObserver.observe(s));
 })();
 
-/* ── Scroll progress bar & back-to-top ── */
+/* ── Scroll progress bar, nav elevation & back-to-top ── */
 (function () {
   const bar = document.querySelector('.scroll-progress');
   const topBtn = document.querySelector('.back-to-top');
+  let queued = false;
 
-  function onScroll() {
+  function update() {
+    queued = false;
     const doc = document.documentElement;
     const max = doc.scrollHeight - doc.clientHeight;
     if (bar && max > 0) bar.style.width = `${(doc.scrollTop / max) * 100}%`;
     if (topBtn) topBtn.classList.toggle('show', doc.scrollTop > 600);
+    if (nav) nav.classList.toggle('is-scrolled', doc.scrollTop > 8);
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  window.addEventListener('scroll', () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(update);
+  }, { passive: true });
+
+  update();
 
   if (topBtn) {
     topBtn.addEventListener('click', () => {

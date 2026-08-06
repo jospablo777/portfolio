@@ -4,23 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>José P. Barrantes - ML Engineer &amp; Data Scientist</title>
-<meta name="description" content="ML Engineer and Data Scientist based in Costa Rica. I build production ML systems, data platforms, and fraud prevention solutions that connect modeling to business decisions.">
+<meta name="description" content="ML Engineer and Data Scientist based in Costa Rica. I manage the complexity that data introduces to ML-enabled systems, and I get those systems into production. Mostly fraud prevention.">
 <meta name="author" content="José P. Barrantes">
 <meta name="theme-color" content="#0d0d0d">
 <link rel="canonical" href="https://jospablo777.github.io/portfolio/">
+<!-- Resolve the theme before first paint so there is no flash of the wrong one. -->
+<script>
+(function () {
+  var t;
+  try { t = localStorage.getItem('theme'); } catch (e) {}
+  if (t !== 'light' && t !== 'dark') {
+    t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  }
+  document.documentElement.setAttribute('data-theme', t);
+  var m = document.querySelector('meta[name="theme-color"]');
+  if (m) m.setAttribute('content', t === 'light' ? '#faf8f5' : '#0d0d0d');
+})();
+</script>
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:type" content="profile">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="José P. Barrantes">
 <meta property="og:title" content="José P. Barrantes - ML Engineer &amp; Data Scientist">
-<meta property="og:description" content="ML Engineer at IBM Fraud Prevention Engineering. I build production ML systems, feature stores, and human-in-the-loop decision systems.">
+<meta property="og:description" content="ML Engineer at IBM Fraud Prevention Engineering. I work on ML platforms, feature stores, and keeping fraud analysts in the loop.">
 <meta property="og:url" content="https://jospablo777.github.io/portfolio/">
 <meta property="og:image" content="https://jospablo777.github.io/portfolio/og-cover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="José P. Barrantes, ML Engineer and Data Scientist, Costa Rica">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="José P. Barrantes - ML Engineer &amp; Data Scientist">
+<meta name="twitter:description" content="ML Engineer at IBM Fraud Prevention Engineering. I work on ML platforms, feature stores, and keeping fraud analysts in the loop.">
 <meta name="twitter:image" content="https://jospablo777.github.io/portfolio/og-cover.png">
+<meta name="twitter:image:alt" content="José P. Barrantes, ML Engineer and Data Scientist, Costa Rica">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script type="application/ld+json">
@@ -32,6 +48,7 @@
   "url": "https://jospablo777.github.io/portfolio/",
   "image": "https://jospablo777.github.io/portfolio/portfolio_pic.jpg",
   "jobTitle": "Machine Learning Engineer",
+  "description": "ML Engineer and Data Scientist specializing in managing the complexity that data introduces to ML-enabled systems, and in getting those systems into production.",
   "worksFor": { "@type": "Organization", "name": "IBM" },
   "address": { "@type": "PostalAddress", "addressCountry": "CR" },
   "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidad de Costa Rica" },
@@ -49,7 +66,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=DM+Sans:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -59,20 +76,37 @@
 <div class="scroll-progress" aria-hidden="true"></div>
 
 <nav>
-  <div class="nav-logo">JP<span>.</span>Barrantes</div>
-  <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
-    <span></span><span></span><span></span>
-  </button>
+  <a class="nav-logo" href="#about">JP<span>.</span>Barrantes</a>
+
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#talks">Talks</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#writing">Writing</a></li>
+    <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="https://github.com/jospablo777" target="_blank" rel="noopener noreferrer" title="GitHub" style="display:inline-flex;align-items:center;"><svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></a></li>
-    <li><a href="https://www.linkedin.com/in/jose-barrantes/" target="_blank" rel="noopener noreferrer" title="LinkedIn" style="display:inline-flex;align-items:center;"><svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
   </ul>
+
+  <div class="nav-right">
+    <a class="nav-icon" href="https://github.com/jospablo777" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile (opens in a new tab)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+    </a>
+    <a class="nav-icon" href="https://www.linkedin.com/in/jose-barrantes/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in a new tab)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a>
+    <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M1.5 12H4M20 12h2.5M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+    </button>
+    <a class="nav-cta" href="JoseP_resume_2026.pdf" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Resume
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <main id="main">
@@ -87,58 +121,61 @@
         <span class="pulse-dot" aria-hidden="true"></span>
         <span>Currently ML Engineer at <strong>IBM</strong>, Fraud Prevention Engineering</span>
       </p>
-      <p class="hero-value-prop">I build production ML systems, data platforms, and fraud prevention solutions that connect modeling to business decisions.</p>
+      <p class="hero-value-prop">I specialize in managing the complexity that data introduces to ML-enabled systems, and in getting those systems into production.</p>
       <p class="hero-bio">
-        In practice, that means designing ML platforms, data pipelines, and decision-support systems that can be trusted in production. I pick the modeling approach that fits the problem, whether that is gradient boosting, Bayesian analysis, causal inference, deep learning, or a clear visualization.
+        Day to day, I work on ML platforms, data pipelines, and the services that put a model in front of a fraud analyst. I pick the method that fits the question: gradient boosting, Bayesian analysis, causal inference, deep learning, or sometimes just a good plot.
       </p>
       <div class="hero-meta">
         <div class="meta-item">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           Costa Rica
         </div>
         <div class="meta-item">
-          <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           M.Sc. Computer Science · B.Sc. Biology
         </div>
         <div class="meta-item">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z"/></svg>
           EN · ES
         </div>
       </div>
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <div class="hero-actions">
         <a href="#projects" class="hero-cta">
           View Projects
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <a href="JoseP_resume_2026.pdf" download class="hero-cta hero-cta-ghost">
-          <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Resume PDF
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Resume
         </a>
       </div>
     </div>
 
     <div class="hero-right">
       <div class="hero-photo-wrapper">
-        <img class="hero-photo" src="portfolio_pic.jpg" alt="José P. Barrantes" width="900" height="1200" fetchpriority="high">
+        <img class="hero-photo" src="portfolio_pic.jpg" alt="Portrait of José P. Barrantes" width="900" height="1200" fetchpriority="high" decoding="async">
       </div>
       <div class="hero-stats">
         <div class="stat-card">
           <div class="stat-number">8+</div>
-          <div class="stat-label">Years in Data</div>
+          <div class="stat-label">Years in data</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Projects delivered</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">30&times;</div>
+          <div class="stat-label">Faster pipelines</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">5</div>
           <div class="stat-label">Industries</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-number">3</div>
-          <div class="stat-label">Conference Talks</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">900+</div>
-          <div class="stat-label">Students Trained</div>
-        </div>
       </div>
+      <p class="hero-stats-note">
+        3 conference talks &middot; 1 peer-reviewed paper &middot; 900+ students trained
+      </p>
     </div>
   </div>
 </div>
@@ -148,22 +185,22 @@
   <div class="section-header">
     <div class="section-eyebrow">Track record</div>
     <h2 class="section-title">Experience</h2>
-    <p class="section-subtitle">Eight years turning data problems into systems that run in production.</p>
+    <p class="section-subtitle">Eight years of building data products in fintech, cybersecurity, financial risk, and research.</p>
   </div>
 
   <ol class="timeline">
 
     <li class="timeline-item is-current">
-      <div class="timeline-date">2025 &mdash; Present</div>
+      <div class="timeline-date">2025 - Present</div>
       <div class="timeline-body">
-        <h3 class="timeline-role">Machine Learning Engineer &amp; Data Scientist</h3>
+        <h3 class="timeline-role">Machine Learning Engineer</h3>
         <div class="timeline-org">IBM &middot; Fraud Prevention Engineering &middot; Costa Rica</div>
         <p class="timeline-desc">
-          Lead fraud science research into complex abuse patterns (camouflage, non-payment intent, impersonation) and turn the findings into ML-driven services on IBM Cloud. Work closely with fraud analysts, software engineers, and non-technical stakeholders.
+          I lead fraud science research to better understand complex patterns like camouflage, non-payment intentions, and impersonation. We translate the findings into predictive services driven by machine learning. Developing models is one of my responsibilities, but my main focus is creating and implementing ML products on IBM Cloud, in close collaboration with fraud analysts, software engineers, and non-technical stakeholders.
         </p>
         <ul class="timeline-wins">
-          <li>Designed and shipped the team's first ML platform following MLOps best practices, now backing an automated anti-fraud system that cut reaction time significantly.</li>
-          <li>Trained the ML engine powering inference for that product.</li>
+          <li>I designed and implemented the team's first ML platform, following the best MLOps practices. It now supports a system that automates anti-fraud actions and significantly reduced our reaction time, which saves the company money.</li>
+          <li>I also trained the ML engine that powers the inference for that product. More developments on the way :)</li>
         </ul>
         <div class="timeline-tech">
           <span class="tech-tag">Python</span><span class="tech-tag">MLflow</span><span class="tech-tag">Docker</span><span class="tech-tag">Kubernetes</span><span class="tech-tag">Feast</span>
@@ -172,16 +209,16 @@
     </li>
 
     <li class="timeline-item">
-      <div class="timeline-date">2023 &mdash; 2024</div>
+      <div class="timeline-date">2023 - 2024</div>
       <div class="timeline-body">
         <h3 class="timeline-role">Assistant Director, Data Scientist</h3>
         <div class="timeline-org">Moody's Analytics &middot; Predictive Analytics Chapter</div>
         <p class="timeline-desc">
-          Modeling, statistical analysis, experimentation, and process automation over large climate and public-finance datasets.
+          The Predictive Analytics Chapter focuses on modeling, statistical analysis, experimentation, and process automation, over enormous databases on climate and public financial information. We worked mostly in R, Python, and the AWS ecosystem.
         </p>
         <ul class="timeline-wins">
-          <li>Parallelized core workloads for up to a 30x reduction in execution time.</li>
-          <li>Automated customer report generation and iterated on risk assessment and time-series models.</li>
+          <li>Parallelized our code and brought the execution time down, up to 30x faster.</li>
+          <li>Experimented with several models for risk assessment and time series, and automated report generation for our customers.</li>
         </ul>
         <div class="timeline-tech">
           <span class="tech-tag">R</span><span class="tech-tag">Python</span><span class="tech-tag">AWS</span><span class="tech-tag">Time Series</span>
@@ -190,16 +227,16 @@
     </li>
 
     <li class="timeline-item">
-      <div class="timeline-date">2021 &mdash; 2023</div>
+      <div class="timeline-date">2021 - 2023</div>
       <div class="timeline-body">
         <h3 class="timeline-role">Security Data Analyst</h3>
         <div class="timeline-org">Arkose Labs &middot; Customer Success Chapter</div>
         <p class="timeline-desc">
-          Identified and described cyberattack patterns in real time at very large scale, then communicated findings and mitigation approaches directly to customers.
+          One of the central roles in the Customer Success Chapter: guarantee the safety of our customers. Find patterns in real time to identify, describe, and stop cyberattacks, then talk to the customers directly to deliver the findings and explain how we approach their fraudulent activity.
         </p>
         <ul class="timeline-wins">
-          <li>Built automated solutions for the team's most repetitive investigation tasks.</li>
-          <li>Team recognized internally multiple times for the work.</li>
+          <li>Built automated solutions for some of our most common investigation tasks.</li>
+          <li>Our team was awarded internally several times for this work.</li>
         </ul>
         <div class="timeline-tech">
           <span class="tech-tag">AWS</span><span class="tech-tag">Python</span><span class="tech-tag">SQL</span><span class="tech-tag">Statistical Inference</span>
@@ -208,16 +245,16 @@
     </li>
 
     <li class="timeline-item">
-      <div class="timeline-date">2020 &mdash; 2021</div>
+      <div class="timeline-date">2020 - 2021</div>
       <div class="timeline-body">
         <h3 class="timeline-role">Data Scientist</h3>
         <div class="timeline-org">Namutek Fintech &middot; BAC Credomatic Banking Group</div>
         <p class="timeline-desc">
-          Owned the full data-to-decision loop across Marketing, UX, Fraud Prevention, and Compliance: extraction, feature engineering, modeling, and presenting findings to product and management.
+          The whole data-to-insight process: dive into the data lake, get the data, wrangle it, engineer features, model it, and present the findings. Then work with management, product owners, and project managers to turn those findings into decisions, and cultivate a data-driven culture along the way.
         </p>
         <ul class="timeline-wins">
-          <li>Delivered and deployed 50+ projects across company chapters.</li>
-          <li>Replaced licensed BI tooling with R Shiny dashboards, cutting license spend.</li>
+          <li>Developed and deployed more than 50 projects across company chapters: Marketing, UX, Fraud Prevention, and Compliance.</li>
+          <li>Saved budget on license costs by designing and implementing our own R Shiny dashboards.</li>
         </ul>
         <div class="timeline-tech">
           <span class="tech-tag">R Shiny</span><span class="tech-tag">Python</span><span class="tech-tag">SQL</span><span class="tech-tag">AWS</span>
@@ -226,12 +263,12 @@
     </li>
 
     <li class="timeline-item">
-      <div class="timeline-date">2011 &mdash; 2018</div>
+      <div class="timeline-date">2011 - 2018</div>
       <div class="timeline-body">
         <h3 class="timeline-role">Teaching Assistant, Biology</h3>
         <div class="timeline-org">Universidad de Costa Rica</div>
         <p class="timeline-desc">
-          Lectures, lab instruction, and assessment across a range of biology courses. Trained 900+ university students, which is where the habit of explaining technical work clearly started.
+          Theoretical lectures, practical laboratory knowledge and techniques, and evaluating the progress of the students. I trained over 900 university students in diverse areas of biology.
         </p>
       </div>
     </li>
@@ -239,7 +276,7 @@
   </ol>
 
   <p class="timeline-footnote">
-    Full history, references, and international experience are in the
+    My full history, references, and international experience are in the
     <a href="JoseP_resume_2026.pdf" download>resume PDF</a>.
   </p>
 </section>
@@ -249,7 +286,7 @@
   <div class="section-header">
     <div class="section-eyebrow">Speaking</div>
     <h2 class="section-title">Talks &amp; Workshops</h2>
-    <p class="section-subtitle">Presenting fraud prevention and MLOps work at conferences across Latin America.</p>
+    <p class="section-subtitle">I present my fraud prevention and MLOps work at conferences around Latin America.</p>
   </div>
 
   <div class="projects-grid">
@@ -263,10 +300,10 @@
       <h3 class="card-title">Fraud Prevention, ML &amp; Human-in-the-Loop Design</h3>
       <div class="card-year">2026 &middot; Nerdearla &middot; Santiago, Chile 🇨🇱 &middot; 25 min &middot; Spanish</div>
       <p class="card-description">
-        Most fraud systems are built to remove the analyst. This talk argues the opposite: I propose an ML-enabled human-in-the-loop triage pattern where the model ranks and prioritizes a queue instead of auto-blocking, and the analyst's decision becomes training signal rather than a bottleneck.
+        Most fraud systems are built to take the analyst out of the loop. I propose keeping them in it: the model ranks and prioritizes the review queue instead of auto-blocking, and every decision the analyst makes comes back as training signal.
       </p>
       <p class="card-outcome">
-        <span>Why it matters</span> It is the thesis my day-to-day work is built on, presented to a regional audience of practitioners and now written up as a design pattern. The talk covers where full automation quietly fails in fraud prevention, what the pattern looks like as an architecture, and how to measure whether keeping humans in the loop is actually paying for itself.
+        <span>Why it matters</span> This is how I work every day, written up as a design pattern for a regional audience of practitioners. The talk covers where full automation fails in fraud prevention, what the pattern looks like as an architecture, and how to measure if keeping humans in the loop is paying off.
       </p>
       <div class="card-tech">
         <span class="tech-tag">Fraud Prevention</span>
@@ -293,13 +330,13 @@
 
     <div class="project-card" style="--card-accent: var(--label-talk); animation-delay: 0.1s;">
       <div class="talk-badge">
-        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
         Workshop
       </div>
       <h3 class="card-title">Feature Store for Time-Series Forecasting</h3>
       <div class="card-year">2025 · DataDay · Monterrey, Mexico 🇲🇽</div>
       <p class="card-description">
-        Hands-on workshop building a feature store for multi-series forecasting on Iowa Liquor Sales data. Covers ETL pipelines in Mage, feature definitions and point-in-time correct training datasets in Feast, DuckDB as the offline store, and online materialization to SQLite for model serving.
+        A hands-on workshop where we build a feature store for multi-series forecasting on Iowa Liquor Sales data. It covers ETL pipelines in Mage, feature definitions and point-in-time correct training datasets in Feast, DuckDB as the offline store, and online materialization to SQLite for serving.
       </p>
       <div class="card-tech">
         <span class="tech-tag">MLOps</span>
@@ -312,11 +349,11 @@
       <div class="card-links-row">
         <a href="https://github.com/jospablo777/time_series_feature_store" target="_blank" rel="noopener noreferrer" class="card-link">
           Workshop Materials
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <a href="https://sg.com.mx/dataday/sessions/2025mty/construccion-de-un-feature-store-para-series-de-tiempo-con-mage-y-feast/" target="_blank" rel="noopener noreferrer" class="card-link">
           Talk Page
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
@@ -337,13 +374,13 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
       Filter
     </span>
-    <button class="filter-btn active" data-filter="all" aria-pressed="true" style="--active-color: var(--accent-red); --glow-rgb: 192,57,43;">All</button>
-    <button class="filter-btn" aria-pressed="false" data-filter="ml-eng" style="--active-color: var(--label-ml); --glow-rgb: 192,57,43;">ML Eng</button>
-    <button class="filter-btn" aria-pressed="false" data-filter="data-eng" style="--active-color: var(--label-data-eng); --glow-rgb: 41,128,185;">Data Eng</button>
-    <button class="filter-btn" aria-pressed="false" data-filter="stats" style="--active-color: var(--label-stats); --glow-rgb: 142,68,173;">Stats</button>
-    <button class="filter-btn" aria-pressed="false" data-filter="data-sci" style="--active-color: var(--label-data-sci); --glow-rgb: 39,174,96;">Data Science</button>
-    <button class="filter-btn" aria-pressed="false" data-filter="mlops" style="--active-color: var(--label-mlops); --glow-rgb: 230,126,34;">MLOps</button>
-    <button class="filter-btn" aria-pressed="false" data-filter="api" style="--active-color: var(--label-api); --glow-rgb: 22,160,133;">API</button>
+    <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All</button>
+    <button class="filter-btn" type="button" aria-pressed="false" data-filter="ml-eng" style="--active-color: var(--label-ml); --active-text: var(--label-ml-text);">ML Eng</button>
+    <button class="filter-btn" type="button" aria-pressed="false" data-filter="data-eng" style="--active-color: var(--label-data-eng); --active-text: var(--label-data-eng-text);">Data Eng</button>
+    <button class="filter-btn" type="button" aria-pressed="false" data-filter="stats" style="--active-color: var(--label-stats); --active-text: var(--label-stats-text);">Stats</button>
+    <button class="filter-btn" type="button" aria-pressed="false" data-filter="data-sci" style="--active-color: var(--label-data-sci); --active-text: var(--label-data-sci-text);">Data Science</button>
+    <button class="filter-btn" type="button" aria-pressed="false" data-filter="mlops" style="--active-color: var(--label-mlops); --active-text: var(--label-mlops-text);">MLOps</button>
+    <button class="filter-btn" type="button" aria-pressed="false" data-filter="api" style="--active-color: var(--label-api); --active-text: var(--label-api-text);">API</button>
   </div>
 
   <p class="filter-status" role="status" aria-live="polite"></p>
@@ -353,16 +390,16 @@
     <!-- Feature Store Workshop -->
     <div class="project-card" data-labels="mlops,data-eng,ml-eng" style="--card-accent: var(--label-mlops); animation-delay: 0.05s;">
       <div class="card-labels">
-        <span class="card-label" style="--label-rgb: 230,126,34; --label-color: var(--label-mlops);">MLOps</span>
-        <span class="card-label" style="--label-rgb: 41,128,185; --label-color: var(--label-data-eng);">Data Eng</span>
-        <span class="card-label" style="--label-rgb: 192,57,43; --label-color: var(--label-ml);">ML Eng</span>
+        <span class="card-label" style="--label-color: var(--label-mlops-text);">MLOps</span>
+        <span class="card-label" style="--label-color: var(--label-data-eng-text);">Data Eng</span>
+        <span class="card-label" style="--label-color: var(--label-ml-text);">ML Eng</span>
       </div>
-      <h3 class="card-title">Feature Store for Time-Series Forecasting</h3>
-      <div class="card-year">2025 · Workshop @ DataDay Monterrey</div>
+      <h3 class="card-title">Time-Series Feature Store (Mage + Feast)</h3>
+      <div class="card-year">2025 &middot; Codebase behind the DataDay Monterrey workshop</div>
       <p class="card-description">
-        Companion codebase for the DataDay 2025 workshop in Monterrey, Mexico: a working feature store for time-series forecasting, with Mage handling orchestration and Feast serving point-in-time correct features for training and inference.
+        The companion codebase for my DataDay 2025 workshop in Monterrey, Mexico: a working feature store for time-series forecasting, with Mage handling the orchestration and Feast serving point-in-time correct features for training and inference.
       </p>
-      <p class="card-outcome"><span>Why it matters</span> Point-in-time correctness is the quiet killer in forecasting pipelines. This is a working reference for avoiding label leakage when the same features serve both training and inference.</p>
+      <p class="card-outcome"><span>Why it matters</span> Point-in-time correctness is easy to get wrong and hard to notice. This is a working reference for avoiding label leakage when the same features feed both training and inference.</p>
       <div class="card-tech">
         <span class="tech-tag">Python</span>
         <span class="tech-tag">Mage</span>
@@ -373,11 +410,11 @@
       <div class="card-links-row">
         <a href="https://sg.com.mx/dataday/sessions/2025mty/construccion-de-un-feature-store-para-series-de-tiempo-con-mage-y-feast/" target="_blank" rel="noopener noreferrer" class="card-link">
           Talk Page
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <a href="https://github.com/jospablo777/time_series_feature_store" target="_blank" rel="noopener noreferrer" class="card-link">
           GitHub
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
@@ -385,15 +422,15 @@
     <!-- Data Pipeline -->
     <div class="project-card" data-labels="data-eng,data-sci" style="--card-accent: var(--label-data-eng); animation-delay: 0.1s;">
       <div class="card-labels">
-        <span class="card-label" style="--label-rgb: 41,128,185; --label-color: var(--label-data-eng);">Data Eng</span>
-        <span class="card-label" style="--label-rgb: 39,174,96; --label-color: var(--label-data-sci);">Data Science</span>
+        <span class="card-label" style="--label-color: var(--label-data-eng-text);">Data Eng</span>
+        <span class="card-label" style="--label-color: var(--label-data-sci-text);">Data Science</span>
       </div>
       <h3 class="card-title">High-Performance Analytics Pipeline</h3>
       <div class="card-year">2025</div>
       <p class="card-description">
-        End-to-end data pipeline on Iowa Liquor Sales (30M+ rows) covering the full data lifecycle: concurrent ingestion from the SODA API, transformation with Polars, persistent storage in DuckDB, geospatial analytics in R, and time-series forecasting with sktime. Accompanied by a hands-on tutorial article.
+        An end-to-end data pipeline on Iowa Liquor Sales (30M+ rows) covering the full data lifecycle: concurrent ingestion from the SODA API, transformation with Polars, persistent storage in DuckDB, geospatial analytics in R, and time-series forecasting with sktime. It comes with a hands-on tutorial article.
       </p>
-      <p class="card-outcome"><span>Why it matters</span> Shows that 30M+ rows do not require a cluster. The whole lifecycle, ingestion through forecasting, runs on one machine with columnar tooling.</p>
+      <p class="card-outcome"><span>Why it matters</span> The aim was a lightweight, high-performance repository optimized for analytical queries on your own machine. 30M+ rows, ingestion through forecasting, no cluster needed.</p>
       <div class="card-tech">
         <span class="tech-tag">Data Engineering</span>
         <span class="tech-tag">Mage</span>
@@ -405,11 +442,11 @@
       <div class="card-links-row">
         <a href="https://jospablo777.github.io/mage_duckdb_pipeline/data_pipeline_mage.html" target="_blank" rel="noopener noreferrer" class="card-link">
           Read Article
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <a href="https://github.com/jospablo777/mage_duckdb_pipeline" target="_blank" rel="noopener noreferrer" class="card-link">
           GitHub
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
@@ -417,16 +454,16 @@
     <!-- ML Model API -->
     <div class="project-card" data-labels="ml-eng,mlops,api" style="--card-accent: var(--label-ml); animation-delay: 0.15s;">
       <div class="card-labels">
-        <span class="card-label" style="--label-rgb: 192,57,43; --label-color: var(--label-ml);">ML Eng</span>
-        <span class="card-label" style="--label-rgb: 230,126,34; --label-color: var(--label-mlops);">MLOps</span>
-        <span class="card-label" style="--label-rgb: 22,160,133; --label-color: var(--label-api);">API</span>
+        <span class="card-label" style="--label-color: var(--label-ml-text);">ML Eng</span>
+        <span class="card-label" style="--label-color: var(--label-mlops-text);">MLOps</span>
+        <span class="card-label" style="--label-color: var(--label-api-text);">API</span>
       </div>
       <h3 class="card-title">ML Model API Microservice</h3>
       <div class="card-year">2024</div>
       <p class="card-description">
-        Production-ready microservice predicting bike rentals with a CatBoost regressor. Features Pydantic request validation, automated unit/integration/inference tests with pytest, Docker containerization, and a CI/CD pipeline via GitHub Actions. Accompanied by a tutorial article on software engineering practices for data scientists.
+        A production-ready microservice that predicts bike rentals with a CatBoost regression model. It has Pydantic request validation, automated unit, integration and inference tests with pytest, Docker containerization, and a CI/CD pipeline built with GitHub Actions. It comes with a tutorial article on software engineering practices for data scientists.
       </p>
-      <p class="card-outcome"><span>Why it matters</span> Written as a teaching artifact for data scientists moving into engineering: validation, tests, containers, and CI applied to a model service rather than described in the abstract.</p>
+      <p class="card-outcome"><span>Why it matters</span> I wrote this for data scientists who are moving into engineering. Validation, tests, containers, and CI/CD applied to a real model service instead of explained in theory.</p>
       <div class="card-tech">
         <span class="tech-tag">FastAPI</span>
         <span class="tech-tag">CatBoost</span>
@@ -438,11 +475,11 @@
       <div class="card-links-row">
         <a href="https://jospablo777.github.io/ml_model_api/bikesharing_api.html" target="_blank" rel="noopener noreferrer" class="card-link">
           Read Article
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <a href="https://github.com/jospablo777/ml_model_api" target="_blank" rel="noopener noreferrer" class="card-link">
           GitHub
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
@@ -450,15 +487,15 @@
     <!-- Iowa Liquor Sales -->
     <div class="project-card" data-labels="data-sci,stats" style="--card-accent: var(--label-data-sci); animation-delay: 0.2s;">
       <div class="card-labels">
-        <span class="card-label" style="--label-rgb: 39,174,96; --label-color: var(--label-data-sci);">Data Science</span>
-        <span class="card-label" style="--label-rgb: 142,68,173; --label-color: var(--label-stats);">Stats</span>
+        <span class="card-label" style="--label-color: var(--label-data-sci-text);">Data Science</span>
+        <span class="card-label" style="--label-color: var(--label-stats-text);">Stats</span>
       </div>
       <h3 class="card-title">Iowa Liquor Sales Analysis</h3>
       <div class="card-year">2024</div>
       <p class="card-description">
-        Deep-dive into 12 years of Iowa liquor sales (~28M invoices). Covers STL decomposition, isolation forest anomaly detection (via PyCaret), and Bayesian estimation (BEST) to answer two questions: does inventory diversity drive sales, and did the pandemic increase alcohol consumption? Built in R with Python interop through reticulate, published as a reproducible Quarto document.
+        A deep dive into 12 years of Iowa liquor sales (~28M invoices). It covers STL decomposition, isolation forest anomaly detection with PyCaret, and Bayesian estimation (BEST) to answer two questions: does inventory diversity drive sales, and did the pandemic increase alcohol consumption? Built in R with Python interop through reticulate, and published as a reproducible Quarto document.
       </p>
-      <p class="card-outcome"><span>Why it matters</span> Two business questions answered with uncertainty attached rather than point estimates, and published as a fully reproducible document.</p>
+      <p class="card-outcome"><span>Why it matters</span> Two business questions answered with uncertainty attached instead of a single number, in a document you can re-run yourself.</p>
       <div class="card-tech">
         <span class="tech-tag">R</span>
         <span class="tech-tag">Time Series</span>
@@ -469,11 +506,11 @@
       <div class="card-links-row">
         <a href="https://jospablo777.github.io/iowa_liquor_sales_analysis/iowa_liquor_analysis.html" target="_blank" rel="noopener noreferrer" class="card-link">
           Read Article
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <a href="https://github.com/jospablo777/iowa_liquor_sales_analysis" target="_blank" rel="noopener noreferrer" class="card-link">
           GitHub
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
@@ -481,16 +518,16 @@
     <!-- Real-time Fraud Prevention -->
     <div class="project-card" data-labels="ml-eng,data-eng,mlops" style="--card-accent: var(--label-ml); animation-delay: 0.25s;">
       <div class="card-labels">
-        <span class="card-label" style="--label-rgb: 192,57,43; --label-color: var(--label-ml);">ML Eng</span>
-        <span class="card-label" style="--label-rgb: 41,128,185; --label-color: var(--label-data-eng);">Data Eng</span>
-        <span class="card-label" style="--label-rgb: 230,126,34; --label-color: var(--label-mlops);">MLOps</span>
+        <span class="card-label" style="--label-color: var(--label-ml-text);">ML Eng</span>
+        <span class="card-label" style="--label-color: var(--label-data-eng-text);">Data Eng</span>
+        <span class="card-label" style="--label-color: var(--label-mlops-text);">MLOps</span>
       </div>
       <h3 class="card-title">Real-Time Fraud Prevention System</h3>
       <div class="card-year">2025 &middot; Work in progress</div>
       <p class="card-description">
-        Sandbox for the triage pattern, wired as five Docker-composed microservices: a FastAPI generator using the Synthetic Data Vault (SDV), Kafka for event streaming, a Mage pipeline that scores transactions, and a Streamlit risk viewer over DuckDB where analysts review high-risk cases.
+        A sandbox for the triage pattern, wired as five Docker-composed microservices: a FastAPI generator using the Synthetic Data Vault (SDV), Kafka for event streaming, a Mage pipeline that scores the transactions, and a Streamlit risk viewer over DuckDB where analysts review the high-risk cases.
       </p>
-      <p class="card-outcome"><span>Why it matters</span> A scaffold for testing the queue-prioritization idea end to end. Still being built out.</p>
+      <p class="card-outcome"><span>Why it matters</span> A place to test the queue-prioritization idea end to end. Still building it out.</p>
       <div class="card-tech">
         <span class="tech-tag">Kafka</span>
         <span class="tech-tag">Mage</span>
@@ -538,7 +575,7 @@
       <div class="pub-body">
         <h3 class="pub-title">Building a data pipeline for high-performance analytics</h3>
         <div class="pub-meta">2025 &middot; Mage, Polars, DuckDB</div>
-        <p class="pub-desc">Walkthrough of moving data from the Socrata Open Data API into a local analytical store fast enough to query interactively.</p>
+        <p class="pub-desc">How to move data from the Socrata Open Data API into a local analytical store that is fast enough to query interactively.</p>
         <a href="https://jospablo777.github.io/mage_duckdb_pipeline/data_pipeline_mage.html" target="_blank" rel="noopener noreferrer" class="card-link">
           Read article
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -567,7 +604,7 @@
   <div class="section-header">
     <div class="section-eyebrow">Toolkit</div>
     <h2 class="section-title">Skills &amp; Technologies</h2>
-    <p class="section-subtitle">What I reach for most. The projects above show these in use.</p>
+    <p class="section-subtitle">The tools I reach for most. The projects above show them in use.</p>
   </div>
 
   <div class="skills-grid">
@@ -669,26 +706,30 @@
 <!-- ── Contact ── -->
 <section id="contact">
   <div class="section-header">
-    <div class="section-eyebrow">Get in touch</div>
-    <h2 class="section-title">Let's Connect</h2>
-    <p class="section-subtitle">Open to collaborations, interesting problems, and good coffee.</p>
+    <div class="section-eyebrow">Contact</div>
+    <h2 class="section-title">Get in touch</h2>
+    <p class="section-subtitle">I am open to collaborations and interesting problems. I also like coffee.</p>
   </div>
   <p class="contact-note">
-    Based in Costa Rica (UTC&minus;6, overlapping US business hours). I read every message and reply to
-    the ones that are clearly not a mass mailing.
+    I am based in Costa Rica (UTC&minus;6), so my hours overlap with the US. I read every message,
+    and I reply to the ones that are not mass mailings.
   </p>
-  <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+  <div class="contact-actions">
     <a id="emailCta" href="#" class="hero-cta hero-cta-sm">
-      <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       Email Me
     </a>
+    <a href="https://www.linkedin.com/in/jose-barrantes/" target="_blank" rel="noopener noreferrer" class="hero-cta hero-cta-ghost hero-cta-sm">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
     <a href="https://github.com/jospablo777" target="_blank" rel="noopener noreferrer" class="hero-cta hero-cta-ghost hero-cta-sm">
-      <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
       GitHub
     </a>
-    <a href="https://www.linkedin.com/in/jose-barrantes/" target="_blank" rel="noopener noreferrer" class="hero-cta hero-cta-ghost hero-cta-sm">
-      <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-      LinkedIn
+    <a href="JoseP_resume_2026.pdf" download class="hero-cta hero-cta-ghost hero-cta-sm">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Resume
     </a>
   </div>
 </section>
@@ -701,11 +742,11 @@
     <a href="https://www.linkedin.com/in/jose-barrantes/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="https://github.com/jospablo777" target="_blank" rel="noopener noreferrer">GitHub</a>
   </div>
-  <p>&copy; <span id="footerYear">2026</span> José P. Barrantes. Built with care and caffeine.</p>
+  <p>&copy; <span id="footerYear">2026</span> José P. Barrantes. Written by hand in HTML, CSS, and JavaScript. No build step.</p>
 </footer>
 
 <button class="back-to-top" aria-label="Back to top">
-  <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
 <script src="js/main.js"></script>
