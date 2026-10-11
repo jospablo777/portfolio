@@ -17,7 +17,7 @@
     13. Print
 
    Colour rule: every small-text colour in here is checked to 4.5:1 against the
-   surface it sits on, in BOTH themes. Use the `-text` variant of a label colour
+   surface it sits on, in both themes. Use the `-text` variant of a label colour
    for text; the plain variant is for fills, rules, and 3px accents only.
    ═══════════════════════════════════════════════ */
 
@@ -85,9 +85,9 @@
   --accent-warm: #d4a373;
 }
 
-/* Light theme. Applied by the inline <head> script from localStorage, falling
-   back to the OS preference. Without JS the site stays dark, which is the
-   designed default rather than a degraded state. */
+/* Light theme. The inline <head> script applies it when localStorage.theme is
+   'light'. The OS preference is ignored. Without JS the site stays dark, which
+   is the default. */
 :root[data-theme='light'] {
   color-scheme: light;
 
@@ -182,8 +182,8 @@ html.theme-anim *:not(.scroll-progress) {
   transition-timing-function: ease;
 }
 
-/* On near-white surfaces a 10% border alone reads flat; a hairline shadow gives
-   cards their edge back without turning the page into a stack of boxes. */
+/* On near-white surfaces a 10% border alone has too little contrast, so a
+   hairline shadow marks the card edge. */
 :root[data-theme='light'] .stat-card,
 :root[data-theme='light'] .project-card,
 :root[data-theme='light'] .pub-item,
@@ -377,7 +377,7 @@ nav.is-scrolled { border-bottom-color: var(--border-subtle); }
   100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--label-live) 0%, transparent); }
 }
 
-/* The one sentence a recruiter must read. Largest body type on the page. */
+/* Largest body type on the page. */
 .hero-value-prop {
   font-size: clamp(1.1rem, 1.5vw, 1.25rem);
   color: var(--text-primary);
@@ -555,7 +555,7 @@ section { padding: 5.5rem 3rem; max-width: 1200px; margin: 0 auto; }
 .timeline-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
 /* Wide screens: dates in their own rail. Recruiters scan the date column, and
-   it stops the section from hugging the left half of a 1440px window. */
+   the rail keeps the section from sitting in the left half of a 1440px window. */
 @media (min-width: 900px) {
   .timeline-item {
     display: grid;
@@ -635,7 +635,7 @@ section { padding: 5.5rem 3rem; max-width: 1200px; margin: 0 auto; }
   font-weight: 400; margin-bottom: 1.35rem; max-width: 62ch;
 }
 
-/* "Why it matters": the line that does the persuading */
+/* "Why it matters" line under the card description */
 .card-outcome {
   font-size: 0.93rem; color: var(--text-primary); font-weight: 400;
   line-height: 1.65; margin-bottom: 1.5rem; padding: 0.15rem 0 0.15rem 1rem;
@@ -680,8 +680,8 @@ section { padding: 5.5rem 3rem; max-width: 1200px; margin: 0 auto; }
   background: color-mix(in srgb, var(--card-accent, var(--accent)) 14%, transparent);
   border: 1px solid color-mix(in srgb, var(--card-accent, var(--accent)) 38%, transparent);
 }
-/* Deepen the tint on hover instead of flooding it with the accent. The talk
-   gold (#f39c12) would leave white text at 2.1:1. */
+/* Hover darkens the tint. A solid accent fill would put white text on talk
+   gold (#f39c12) at 2.1:1. */
 .card-link-primary:hover {
   background: color-mix(in srgb, var(--card-accent, var(--accent)) 26%, transparent);
   border-color: color-mix(in srgb, var(--card-accent, var(--accent)) 62%, transparent);
@@ -690,7 +690,6 @@ section { padding: 5.5rem 3rem; max-width: 1200px; margin: 0 auto; }
 .card-link-primary .icon-play { fill: currentColor; stroke: none; width: 11px; height: 11px; }
 .card-link-primary:hover .icon-play { transform: none; }
 
-/* Featured card spans the grid */
 .project-card.is-featured {
   grid-column: 1 / -1;
   --featured-tint: var(--card-accent, var(--accent));
@@ -713,16 +712,17 @@ section { padding: 5.5rem 3rem; max-width: 1200px; margin: 0 auto; }
   padding: 0.4rem 0.9rem; border-radius: 0 var(--radius) 0 var(--radius-sm);
 }
 
-/* Talks are full-width rows: with one featured card plus one regular card, a
-   two-column grid leaves a conspicuous empty cell. */
-#talks .projects-grid { grid-template-columns: minmax(0, 1fr); }
+/* Talks and open source use full-width rows. With one featured card plus one
+   regular card, a two-column grid leaves an empty cell. */
+#talks .projects-grid,
+#open-source .projects-grid { grid-template-columns: minmax(0, 1fr); }
 #talks .card-description { max-width: 76ch; }
 
 .talk-badge {
   display: inline-flex; align-items: center; gap: 0.4rem;
   font-family: 'Space Mono', ui-monospace, monospace; font-size: 0.66rem;
   letter-spacing: 1.2px; text-transform: uppercase;
-  color: var(--label-talk-text); margin-bottom: 0.9rem;
+  color: var(--badge-color, var(--label-talk-text)); margin-bottom: 0.9rem;
 }
 .talk-badge svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
 
@@ -745,9 +745,9 @@ section { padding: 5.5rem 3rem; max-width: 1200px; margin: 0 auto; }
 .filter-btn:hover {
   border-color: var(--border-active); color: var(--text-primary); background: var(--bg-tint);
 }
-/* Tinted rather than filled: a saturated fill cannot carry legible text across
-   seven hues in two themes (green at #27ae60 gives white 2.0:1). Tint + solid
-   border + the AA-checked text variant stays readable for every label. */
+/* Labels use a tint with no solid fill. A saturated fill cannot carry legible
+   text across seven hues in two themes (white on #27ae60 green is 2.0:1). The
+   tint, solid border, and AA-checked text variant stay readable for every label. */
 .filter-btn.active {
   border-color: var(--active-color, var(--accent));
   background: color-mix(in srgb, var(--active-color, var(--accent)) 16%, transparent);
@@ -885,13 +885,15 @@ footer a:hover { color: var(--accent-text); }
 
 /* ── 11. Responsive ─────────────────────────── */
 
-@media (max-width: 1080px) {
+/* Nav breakpoints are sized to the link count: 8 links need ~1220px at full
+   size and ~1080px compact. Re-measure if you add or rename a nav item. */
+@media (max-width: 1240px) {
   .nav-links { gap: 1.4rem; }
   .nav-links a { font-size: 0.74rem; letter-spacing: 1px; }
   nav { padding: 0.9rem 1.75rem; }
 }
 
-@media (max-width: 940px) {
+@media (max-width: 1100px) {
   .nav-toggle { display: block; }
   .nav-cta { display: none; }        /* hero keeps a prominent resume button */
   .nav-links {
@@ -903,12 +905,15 @@ footer a:hover { color: var(--accent-text); }
     max-height: 0; overflow: hidden;
     transition: max-height 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
-  /* Generous cap + scroll: adding a nav item can never clip the last one again */
+  /* Capped at the viewport height and scrollable, so the last link is never clipped */
   nav.nav-open .nav-links { max-height: calc(100svh - var(--nav-height)); overflow-y: auto; }
   .nav-links li { border-top: 1px solid var(--border-subtle); }
   .nav-links a { display: flex; padding: 0.95rem 1.75rem; font-size: 0.82rem; letter-spacing: 1.4px; }
   .nav-links a::after { display: none; }
   .nav-links a.active { color: var(--accent-text); }
+}
+
+@media (max-width: 940px) {
   .skills-grid { grid-template-columns: minmax(0, 1fr); gap: 2.25rem; }
 }
 
@@ -916,7 +921,7 @@ footer a:hover { color: var(--accent-text); }
   .hero { min-height: 0; padding: calc(var(--nav-height) + 2.5rem) 1.5rem 3.5rem; }
   .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 2.25rem; }
   /* Unwrap the right column so photo / pitch / proof can be ordered
-     independently: face first, then who he is, then the numbers. Moving the
+     independently: photo first, then the pitch, then the numbers. Moving the
      whole column would push the stat cards above the headline. */
   .hero-right { display: contents; }
   .hero-photo-wrapper { order: -1; max-width: 240px; }

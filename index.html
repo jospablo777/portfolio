@@ -83,6 +83,7 @@
     <li><a href="#experience">Experience</a></li>
     <li><a href="#talks">Talks</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#open-source">Open Source</a></li>
     <li><a href="#writing">Writing</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -123,7 +124,7 @@
       </p>
       <p class="hero-value-prop">I specialize in managing the complexity that data introduces to ML-enabled systems, and in getting those systems into production.</p>
       <p class="hero-bio">
-        Day to day, I work on ML platforms, data pipelines, and the services that put a model in front of a fraud analyst. I pick the method that fits the question: gradient boosting, Bayesian analysis, causal inference, deep learning, or sometimes just a good plot.
+        Day to day, I work on ML platforms, data pipelines, and the services that put a model in front of a fraud analyst. I choose the method for each question. I use gradient boosting, Bayesian analysis, causal inference, and deep learning, and some questions only need a good plot.
       </p>
       <div class="hero-meta">
         <div class="meta-item">
@@ -196,11 +197,11 @@
         <h3 class="timeline-role">Machine Learning Engineer</h3>
         <div class="timeline-org">IBM &middot; Fraud Prevention Engineering &middot; Costa Rica</div>
         <p class="timeline-desc">
-          I lead fraud science research to better understand complex patterns like camouflage, non-payment intentions, and impersonation. We translate the findings into predictive services driven by machine learning. Developing models is one of my responsibilities, but my main focus is creating and implementing ML products on IBM Cloud, in close collaboration with fraud analysts, software engineers, and non-technical stakeholders.
+          I lead fraud science research on patterns such as camouflage, non-payment intent, and impersonation, and we turn the findings into ML prediction services. I develop models, and most of my time goes to building and deploying ML products on IBM Cloud with fraud analysts, software engineers, and business teams.
         </p>
         <ul class="timeline-wins">
-          <li>I designed and implemented the team's first ML platform, following the best MLOps practices. It now supports a system that automates anti-fraud actions and significantly reduced our reaction time, which saves the company money.</li>
-          <li>I also trained the ML engine that powers the inference for that product. More developments on the way :)</li>
+          <li>I designed and implemented the team's first ML platform. It runs a system that automates anti-fraud actions, which cut our reaction time and saves the company money.</li>
+          <li>I also trained the model that serves inference for that product. More developments on the way :)</li>
         </ul>
         <div class="timeline-tech">
           <span class="tech-tag">Python</span><span class="tech-tag">MLflow</span><span class="tech-tag">Docker</span><span class="tech-tag">Kubernetes</span><span class="tech-tag">Feast</span>
@@ -214,7 +215,7 @@
         <h3 class="timeline-role">Assistant Director, Data Scientist</h3>
         <div class="timeline-org">Moody's Analytics &middot; Predictive Analytics Chapter</div>
         <p class="timeline-desc">
-          The Predictive Analytics Chapter focuses on modeling, statistical analysis, experimentation, and process automation, over enormous databases on climate and public financial information. We worked mostly in R, Python, and the AWS ecosystem.
+          The Predictive Analytics Chapter focuses on modeling, statistical analysis, experimentation, and process automation, over large databases of climate and public financial data. We worked mostly in R, Python, and the AWS ecosystem.
         </p>
         <ul class="timeline-wins">
           <li>Parallelized our code and brought the execution time down, up to 30x faster.</li>
@@ -232,7 +233,7 @@
         <h3 class="timeline-role">Security Data Analyst</h3>
         <div class="timeline-org">Arkose Labs &middot; Customer Success Chapter</div>
         <p class="timeline-desc">
-          One of the central roles in the Customer Success Chapter: guarantee the safety of our customers. Find patterns in real time to identify, describe, and stop cyberattacks, then talk to the customers directly to deliver the findings and explain how we approach their fraudulent activity.
+          I protected our customers from cyberattacks. I found attack patterns in real time to identify, describe, and stop them, then met with the customers to present the findings and explain how we handled their fraudulent traffic.
         </p>
         <ul class="timeline-wins">
           <li>Built automated solutions for some of our most common investigation tasks.</li>
@@ -250,10 +251,10 @@
         <h3 class="timeline-role">Data Scientist</h3>
         <div class="timeline-org">Namutek Fintech &middot; BAC Credomatic Banking Group</div>
         <p class="timeline-desc">
-          The whole data-to-insight process: dive into the data lake, get the data, wrangle it, engineer features, model it, and present the findings. Then work with management, product owners, and project managers to turn those findings into decisions, and cultivate a data-driven culture along the way.
+          I ran projects end to end. I pulled data from the data lake, wrangled it, engineered features, built models, and presented the findings. Then I worked with management, product owners, and project managers to turn the findings into decisions.
         </p>
         <ul class="timeline-wins">
-          <li>Developed and deployed more than 50 projects across company chapters: Marketing, UX, Fraud Prevention, and Compliance.</li>
+          <li>Developed and deployed more than 50 projects for the Marketing, UX, Fraud Prevention, and Compliance chapters.</li>
           <li>Saved budget on license costs by designing and implementing our own R Shiny dashboards.</li>
         </ul>
         <div class="timeline-tech">
@@ -268,7 +269,7 @@
         <h3 class="timeline-role">Teaching Assistant, Biology</h3>
         <div class="timeline-org">Universidad de Costa Rica</div>
         <p class="timeline-desc">
-          Theoretical lectures, practical laboratory knowledge and techniques, and evaluating the progress of the students. I trained over 900 university students in diverse areas of biology.
+          I gave lectures, taught laboratory techniques, and evaluated students. I trained over 900 university students across biology courses.
         </p>
       </div>
     </li>
@@ -300,7 +301,7 @@
       <h3 class="card-title">Fraud Prevention, ML &amp; Human-in-the-Loop Design</h3>
       <div class="card-year">2026 &middot; Nerdearla &middot; Santiago, Chile 🇨🇱 &middot; 25 min &middot; Spanish</div>
       <p class="card-description">
-        Most fraud systems are built to take the analyst out of the loop. I propose keeping them in it: the model ranks and prioritizes the review queue instead of auto-blocking, and every decision the analyst makes comes back as training signal.
+        Most fraud systems are built to take the analyst out of the loop. I propose a design where the model ranks the review queue for the analyst, and each analyst decision goes back into training as a label.
       </p>
       <p class="card-outcome">
         <span>Why it matters</span> This is how I work every day, written up as a design pattern for a regional audience of practitioners. The talk covers where full automation fails in fraud prevention, what the pattern looks like as an architecture, and how to measure if keeping humans in the loop is paying off.
@@ -399,7 +400,7 @@
       <p class="card-description">
         The companion codebase for my DataDay 2025 workshop in Monterrey, Mexico: a working feature store for time-series forecasting, with Mage handling the orchestration and Feast serving point-in-time correct features for training and inference.
       </p>
-      <p class="card-outcome"><span>Why it matters</span> Point-in-time correctness is easy to get wrong and hard to notice. This is a working reference for avoiding label leakage when the same features feed both training and inference.</p>
+      <p class="card-outcome"><span>Why it matters</span> A feature joined at the wrong timestamp leaks future information into training, and nothing fails when it happens. This repository shows how to prevent that leakage when training and inference read the same features.</p>
       <div class="card-tech">
         <span class="tech-tag">Python</span>
         <span class="tech-tag">Mage</span>
@@ -428,9 +429,9 @@
       <h3 class="card-title">High-Performance Analytics Pipeline</h3>
       <div class="card-year">2025</div>
       <p class="card-description">
-        An end-to-end data pipeline on Iowa Liquor Sales (30M+ rows) covering the full data lifecycle: concurrent ingestion from the SODA API, transformation with Polars, persistent storage in DuckDB, geospatial analytics in R, and time-series forecasting with sktime. It comes with a hands-on tutorial article.
+        An end-to-end data pipeline on Iowa Liquor Sales (30M+ rows). It ingests concurrently from the SODA API, transforms with Polars, stores the data in DuckDB, runs geospatial analytics in R, and forecasts with sktime. It comes with a hands-on tutorial article.
       </p>
-      <p class="card-outcome"><span>Why it matters</span> The aim was a lightweight, high-performance repository optimized for analytical queries on your own machine. 30M+ rows, ingestion through forecasting, no cluster needed.</p>
+      <p class="card-outcome"><span>Why it matters</span> The whole pipeline, from ingestion to forecasting, runs on 30M+ rows on a single machine with no cluster.</p>
       <div class="card-tech">
         <span class="tech-tag">Data Engineering</span>
         <span class="tech-tag">Mage</span>
@@ -461,9 +462,9 @@
       <h3 class="card-title">ML Model API Microservice</h3>
       <div class="card-year">2024</div>
       <p class="card-description">
-        A production-ready microservice that predicts bike rentals with a CatBoost regression model. It has Pydantic request validation, automated unit, integration and inference tests with pytest, Docker containerization, and a CI/CD pipeline built with GitHub Actions. It comes with a tutorial article on software engineering practices for data scientists.
+        A microservice that predicts bike rentals with a CatBoost regression model. It has Pydantic request validation, automated unit, integration and inference tests with pytest, Docker containerization, and a CI/CD pipeline built with GitHub Actions. It comes with a tutorial article on software engineering practices for data scientists.
       </p>
-      <p class="card-outcome"><span>Why it matters</span> I wrote this for data scientists who are moving into engineering. Validation, tests, containers, and CI/CD applied to a real model service instead of explained in theory.</p>
+      <p class="card-outcome"><span>Why it matters</span> I wrote this for data scientists who are moving into engineering. It applies validation, tests, containers, and CI/CD to a working model service.</p>
       <div class="card-tech">
         <span class="tech-tag">FastAPI</span>
         <span class="tech-tag">CatBoost</span>
@@ -493,9 +494,9 @@
       <h3 class="card-title">Iowa Liquor Sales Analysis</h3>
       <div class="card-year">2024</div>
       <p class="card-description">
-        A deep dive into 12 years of Iowa liquor sales (~28M invoices). It covers STL decomposition, isolation forest anomaly detection with PyCaret, and Bayesian estimation (BEST) to answer two questions: does inventory diversity drive sales, and did the pandemic increase alcohol consumption? Built in R with Python interop through reticulate, and published as a reproducible Quarto document.
+        An analysis of 12 years of Iowa liquor sales (~28M invoices). It uses STL decomposition, isolation forest anomaly detection with PyCaret, and Bayesian estimation (BEST) to test whether inventory diversity drives sales and whether the pandemic increased alcohol consumption. Built in R with Python interop through reticulate, and published as a reproducible Quarto document.
       </p>
-      <p class="card-outcome"><span>Why it matters</span> Two business questions answered with uncertainty attached instead of a single number, in a document you can re-run yourself.</p>
+      <p class="card-outcome"><span>Why it matters</span> Both answers come with uncertainty estimates, and anyone can re-run the Quarto document end to end.</p>
       <div class="card-tech">
         <span class="tech-tag">R</span>
         <span class="tech-tag">Time Series</span>
@@ -525,9 +526,9 @@
       <h3 class="card-title">Real-Time Fraud Prevention System</h3>
       <div class="card-year">2025 &middot; Work in progress</div>
       <p class="card-description">
-        A sandbox for the triage pattern, wired as five Docker-composed microservices: a FastAPI generator using the Synthetic Data Vault (SDV), Kafka for event streaming, a Mage pipeline that scores the transactions, and a Streamlit risk viewer over DuckDB where analysts review the high-risk cases.
+        A sandbox for the triage pattern, built as five microservices in Docker Compose. A FastAPI service generates transactions with the Synthetic Data Vault (SDV), Kafka streams the events, a Mage pipeline scores the transactions, and analysts review the high-risk cases in a Streamlit viewer over DuckDB.
       </p>
-      <p class="card-outcome"><span>Why it matters</span> A place to test the queue-prioritization idea end to end. Still building it out.</p>
+      <p class="card-outcome"><span>Why it matters</span> I use it to test queue prioritization end to end. It is still in development.</p>
       <div class="card-tech">
         <span class="tech-tag">Kafka</span>
         <span class="tech-tag">Mage</span>
@@ -539,6 +540,58 @@
       <div class="card-links-row">
         <a href="https://github.com/jospablo777/fraud_prevention_mage" target="_blank" rel="noopener noreferrer" class="card-link">
           GitHub
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Open Source Contribution ── -->
+<section id="open-source">
+  <div class="section-header">
+    <div class="section-eyebrow">Open source</div>
+    <h2 class="section-title">Open Source Contribution</h2>
+    <p class="section-subtitle">Open source software I maintain and use at work.</p>
+  </div>
+
+  <div class="projects-grid">
+
+    <div class="project-card is-featured" style="--card-accent: var(--label-ml); --badge-color: var(--label-ml-text);">
+      <div class="talk-badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="5" r="2.5"/><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="7" r="2.5"/><path d="M6 7.5v9"/><path d="M18 9.5c0 4-6 3.5-11 7.5"/></svg>
+        Fork of Mage &middot; Apache 2.0
+      </div>
+      <h3 class="card-title">MageML</h3>
+      <div class="card-year">2026 &middot; In production at IBM Fraud Prevention Engineering &middot; Based on Mage 0.9.79</div>
+      <p class="card-description">
+        A fork of the Mage pipeline platform, extended for ML engineering. Pipelines can mix Python, SQL, R, and Rust blocks. Rust blocks run on Polars, and consecutive Rust blocks compile into one program. R blocks share one session with a locked package environment. Any pipeline can be exported as a Docker image with an HTTP API, schedules, run history, and metrics, then deployed to Kubernetes, Cloud Run, Azure Container Apps, AWS ECS, or IBM Code Engine. The same services serve inference for scikit-learn, XGBoost, LightGBM, PyTorch, and ONNX models.
+      </p>
+      <p class="card-outcome">
+        <span>Why it matters</span> My team, Fraud Prevention Engineering at IBM, runs MageML in production on IBM Cloud. For ML work, it adds data contracts, run records, MLflow experiment tracking, model release checks, output monitoring, and a Feast client to Mage. The stack moves to Python 3.12, pandas 3, Polars 2, and NumPy 2, and MageML sends no usage statistics.
+      </p>
+      <div class="card-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Rust</span>
+        <span class="tech-tag">R</span>
+        <span class="tech-tag">Polars</span>
+        <span class="tech-tag">Docker</span>
+        <span class="tech-tag">MLflow</span>
+        <span class="tech-tag">Feast</span>
+        <span class="tech-tag">Model Serving</span>
+      </div>
+      <div class="card-links-row">
+        <a href="https://github.com/jospablo777/mage-ml" target="_blank" rel="noopener noreferrer" class="card-link card-link-primary">
+          GitHub
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://github.com/jospablo777/mage-ml/tree/master/docs-md" target="_blank" rel="noopener noreferrer" class="card-link">
+          Documentation
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://github.com/mage-ai/mage-ai" target="_blank" rel="noopener noreferrer" class="card-link">
+          Upstream: Mage
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>

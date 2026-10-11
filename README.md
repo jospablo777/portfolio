@@ -5,7 +5,7 @@ Personal portfolio site. Static HTML/CSS/JS, no build step, deployed on GitHub P
 ## Structure
 
 ```
-index.html              Single page: hero, experience, talks, projects, writing, skills, contact
+index.html              Single page: hero, experience, talks, projects, open source, writing, skills, contact
 css/styles.css          Design tokens (dark + light) + all styles (incl. print stylesheet)
 js/main.js              Theme switch, filters, scroll reveal, scrollspy, mobile nav, email obfuscation
 og-cover.png            1200x630 social preview card
@@ -29,7 +29,7 @@ robots.txt / sitemap.xml
   light). Two variants per accent: `--label-x` for fills, rules and 3px accents;
   `--label-x-text` for anything you actually read. The plain variants fail WCAG AA
   as small text (brand red is 3.2:1 on `#1a1a1a`; `--label-stats` purple is 3.0:1).
-  Note that a label's own 12-16% tint darkens the surface under it, so check text
+  A label's own 12-16% tint darkens the surface under it, so check text
   against the *composited* background, not the card colour. That is what pushed
   the light-theme labels down to values like `#0c6858`.
 - **Email:** assembled at runtime in `js/main.js` to keep it out of the HTML source
@@ -38,9 +38,11 @@ robots.txt / sitemap.xml
   recruiter's downloads folder. When the year rolls over, rename the PDF and update
   **four** `href`s. Grep for `resume`: nav button (opens in a tab for reading),
   hero CTA and contact button (both `download`), experience footnote.
-- **Adding a nav link:** just add the `<li>`. The mobile drop-down is capped at
-  `100svh - nav-height` with `overflow-y: auto`, so it can no longer clip the last
-  item the way the old fixed `max-height: 420px` did at eight links.
+- **Adding a nav link:** add the `<li>`, then re-measure the nav breakpoints in
+  `css/styles.css` (section 11). With eight links the desktop nav needs ~1220px at
+  full size and ~1080px compact, so the compact style starts at 1240px and the
+  hamburger at 1100px. The mobile drop-down is capped at `100svh - nav-height`
+  with `overflow-y: auto`, so it does not clip the last item.
 - **Social card:** regenerate `og-cover.png` if the headline or role changes, then
   re-scrape at LinkedIn Post Inspector / X Card Validator to bust their caches.
 
@@ -51,7 +53,7 @@ robots.txt / sitemap.xml
 - Keyboard: first Tab should reveal the skip link; filter buttons announce counts
   via the `.filter-status` live region; Escape closes the mobile menu.
 - Mobile: no horizontal overflow at 390px. Chrome headless clamps its viewport to
-  500px, so test narrower widths in a sized iframe rather than `--window-size`.
+  500px, so test narrower widths in a sized iframe. `--window-size` cannot go below 500px.
 - Print (`Cmd-P` → preview): every section must be visible. `.reveal` starts at
   `opacity: 0` and only clears on scroll, so the print block force-resets it.
   Without that, printing before scrolling to the bottom yields blank sections.
