@@ -6,7 +6,7 @@
      2. Reset & base typography
      3. Chrome: noise, scroll progress, nav, skip link
      4. Hero
-     5. Sections (shared furniture)
+     5. Sections (shared styles)
      6. Experience timeline
      7. Cards (projects, talks)
      8. Publications
@@ -64,6 +64,7 @@
   --label-sim: #d6457f;       --label-sim-text: #ee7fa8;
   --label-ts: #5b6ee1;        --label-ts-text: #8c9bf0;
   --label-fraud: #9aa82b;     --label-fraud-text: #b9c94a;
+  --label-tutorial: #7f8ea3;  --label-tutorial-text: #a9b6c8;
   --label-live: #27ae60;
 
   /* Lines & elevation */
@@ -130,6 +131,7 @@
   --label-sim: #b8326a;       --label-sim-text: #9c2558;
   --label-ts: #4453c4;        --label-ts-text: #3a47ad;
   --label-fraud: #6f7a14;     --label-fraud-text: #56600e;
+  --label-tutorial: #5d6b7e;  --label-tutorial-text: #4a5668;
   --label-live: #1a7a45;
 
   --border-subtle: rgba(28, 25, 23, 0.1);
@@ -752,7 +754,7 @@ section { padding: 5.5rem 3rem; max-width: 1200px; margin: 0 auto; }
   border-color: var(--border-active); color: var(--text-primary); background: var(--bg-tint);
 }
 /* Labels use a tint with no solid fill. A saturated fill cannot carry legible
-   text across ten hues in two themes (white on #27ae60 green is 2.0:1). The
+   text across eleven hues in two themes (white on #27ae60 green is 2.0:1). The
    tint, solid border, and AA-checked text variant stay readable for every label. */
 .filter-btn.active {
   border-color: var(--active-color, var(--accent));
@@ -977,7 +979,7 @@ footer a:hover { color: var(--accent-text); }
   .project-card:hover, .stat-card:hover, .skill-tile:hover, .hero-cta:hover { transform: none; }
 }
 
-/* ── 13. Print (recruiters do print these) ──── */
+/* ── 13. Print (recruiters print these) ──── */
 
 @media print {
   nav, .scroll-progress, .back-to-top, .filter-bar, .filter-status,

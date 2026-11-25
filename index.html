@@ -56,7 +56,8 @@
   "knowsAbout": [
     "Machine Learning Engineering", "Fraud Prevention", "MLOps",
     "Feature Stores", "Bayesian Data Analysis", "Causal Inference",
-    "Time Series Forecasting", "Human-in-the-Loop Systems"
+    "Time Series Forecasting", "Human-in-the-Loop Systems",
+    "Agent-Based Simulation"
   ],
   "sameAs": [
     "https://github.com/jospablo777",
@@ -175,7 +176,7 @@
         </div>
       </div>
       <p class="hero-stats-note">
-        3 conference talks &middot; 1 peer-reviewed paper &middot; 900+ students trained
+        2 conference talks &middot; 1 peer-reviewed paper &middot; 900+ students trained
       </p>
     </div>
   </div>
@@ -184,7 +185,7 @@
 <!-- ── Experience ── -->
 <section id="experience">
   <div class="section-header">
-    <div class="section-eyebrow">Track record</div>
+    <div class="section-eyebrow">Career</div>
     <h2 class="section-title">Experience</h2>
     <p class="section-subtitle">Eight years of building data products in fintech, cybersecurity, financial risk, and research.</p>
   </div>
@@ -218,7 +219,7 @@
           The Predictive Analytics Chapter focuses on modeling, statistical analysis, experimentation, and process automation, over large databases of climate and public financial data. We worked mostly in R, Python, and the AWS ecosystem.
         </p>
         <ul class="timeline-wins">
-          <li>Parallelized our code and brought the execution time down, up to 30x faster.</li>
+          <li>Parallelized our code and made it run up to 30x faster.</li>
           <li>Experimented with several models for risk assessment and time series, and automated report generation for our customers.</li>
         </ul>
         <div class="timeline-tech">
@@ -236,7 +237,7 @@
           I protected our customers from cyberattacks. I found attack patterns in real time to identify, describe, and stop them, then met with the customers to present the findings and explain how we handled their fraudulent traffic.
         </p>
         <ul class="timeline-wins">
-          <li>Built automated solutions for some of our most common investigation tasks.</li>
+          <li>Automated some of our most common investigation tasks.</li>
           <li>Our team was awarded internally several times for this work.</li>
         </ul>
         <div class="timeline-tech">
@@ -304,7 +305,7 @@
         Most fraud systems are built to take the analyst out of the loop. I propose a design where the model ranks the review queue for the analyst, and each analyst decision goes back into training as a label.
       </p>
       <p class="card-outcome">
-        <span>Why it matters</span> This is how I work every day, written up as a design pattern for a regional audience of practitioners. The talk covers where full automation fails in fraud prevention, what the pattern looks like as an architecture, and how to measure if keeping humans in the loop is paying off.
+        <span>Why it matters</span> This is how I work every day, written up as a design pattern for a regional audience of practitioners. The talk covers where full automation fails in fraud prevention, what the pattern looks like as an architecture, and how to measure whether keeping humans in the loop pays off.
       </p>
       <div class="card-tech">
         <span class="tech-tag">Fraud Prevention</span>
@@ -385,6 +386,7 @@
     <button class="filter-btn" type="button" aria-pressed="false" data-filter="simulation" style="--active-color: var(--label-sim); --active-text: var(--label-sim-text);">Simulation</button>
     <button class="filter-btn" type="button" aria-pressed="false" data-filter="time-series" style="--active-color: var(--label-ts); --active-text: var(--label-ts-text);">Time Series</button>
     <button class="filter-btn" type="button" aria-pressed="false" data-filter="fraud" style="--active-color: var(--label-fraud); --active-text: var(--label-fraud-text);">Fraud</button>
+    <button class="filter-btn" type="button" aria-pressed="false" data-filter="tutorial" style="--active-color: var(--label-tutorial); --active-text: var(--label-tutorial-text);">Tutorial</button>
   </div>
 
   <p class="filter-status" role="status" aria-live="polite"></p>
@@ -392,30 +394,36 @@
   <div class="projects-grid" id="projectsGrid">
 
     <!-- Orus Fest beer sales simulation -->
-    <div class="project-card" data-labels="simulation,stats,data-sci" style="--card-accent: var(--label-sim); animation-delay: 0.05s;">
+    <div class="project-card" data-labels="simulation,stats,data-sci,time-series" style="--card-accent: var(--label-sim); animation-delay: 0.05s;">
       <div class="card-labels">
         <span class="card-label" style="--label-color: var(--label-sim-text);">Simulation</span>
         <span class="card-label" style="--label-color: var(--label-stats-text);">Stats</span>
         <span class="card-label" style="--label-color: var(--label-data-sci-text);">Data Science</span>
+        <span class="card-label" style="--label-color: var(--label-ts-text);">Time Series</span>
       </div>
       <h3 class="card-title" lang="es">Cerveza sin filas en Orus Fest</h3>
-      <div class="card-year">2026 &middot; Crowd management study for Orus Fest &middot; Mexico City</div>
+      <div class="card-year">2026 &middot; Beer without the lines at Orus Fest &middot; Crowd management study &middot; Mexico City</div>
       <p class="card-description">
-        At Orus Fest 2026, a music festival in Mexico City, the line for a beer took more than 40 minutes between 18:00 and 20:00. I built an agent-based simulation of the attendees, the bands, and the bar, and used it to compare ways of selling beer and how many people to put on the bar for the next edition. I calibrated the model against what we observed at the festival with approximate Bayesian computation, and I estimated the waiting times with Kaplan-Meier. The report is written in Spanish for the organizers, and it has an English version.
+        An agent-based model of attendance and beer sales at Orus Fest, a music festival in Mexico City. At the 2026 edition, the line to exchange beer tickets at the bar took over 40 minutes between 18:00 and 20:00. The model is calibrated to what we saw that night with approximate Bayesian computation, then it reruns the night with other ways of selling and other crews. Every scenario uses the same random seed per night, so the difference from the 2026 setup is the effect of the change.
       </p>
-      <p class="card-outcome"><span>Why it matters</span> About 3 people served beer in 2026. With 18 people serving from 18:00, 9 of 10 buyers in the simulation wait 4 minutes or less, and the bar sells about 3,300 more beers per night. Orus Fest also supports a shelter for homeless dogs and cats.</p>
+      <p class="card-outcome"><span>Why it matters</span> In 2026 about 3 people served beer. In the simulation, 18 people on beer from 18:00 (12 at the bar and 6 on the floor) bring the wait to 4 minutes or less for 9 of 10 buyers, and about 3,300 more beers are sold per night. Orus Fest also supports a shelter for homeless dogs and cats.</p>
       <div class="card-tech">
-        <span class="tech-tag">Agent-Based Simulation</span>
+        <span class="tech-tag">Agent-Based Model</span>
         <span class="tech-tag">Crowd Management</span>
-        <span class="tech-tag">Python</span>
-        <span class="tech-tag">R</span>
         <span class="tech-tag">Approximate Bayesian Computation</span>
         <span class="tech-tag">Kaplan-Meier</span>
+        <span class="tech-tag">Counterfactuals</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">R</span>
         <span class="tech-tag">Quarto</span>
       </div>
       <div class="card-links-row">
         <a href="https://jospablo777.github.io/orus_fest_beer_sales_simulation/" target="_blank" rel="noopener noreferrer" class="card-link">
           Read Report
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://jospablo777.github.io/orus_fest_beer_sales_simulation/en.html" target="_blank" rel="noopener noreferrer" class="card-link">
+          English Version
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <a href="https://github.com/jospablo777/orus_fest_beer_sales_simulation" target="_blank" rel="noopener noreferrer" class="card-link">
@@ -426,12 +434,13 @@
     </div>
 
     <!-- Feature Store Workshop -->
-    <div class="project-card" data-labels="mlops,data-eng,ml-eng,time-series" style="--card-accent: var(--label-mlops); animation-delay: 0.05s;">
+    <div class="project-card" data-labels="mlops,data-eng,ml-eng,time-series,tutorial" style="--card-accent: var(--label-mlops); animation-delay: 0.05s;">
       <div class="card-labels">
         <span class="card-label" style="--label-color: var(--label-mlops-text);">MLOps</span>
         <span class="card-label" style="--label-color: var(--label-data-eng-text);">Data Eng</span>
         <span class="card-label" style="--label-color: var(--label-ml-text);">ML Eng</span>
         <span class="card-label" style="--label-color: var(--label-ts-text);">Time Series</span>
+        <span class="card-label" style="--label-color: var(--label-tutorial-text);">Tutorial</span>
       </div>
       <h3 class="card-title">Time-Series Feature Store (Mage + Feast)</h3>
       <div class="card-year">2025 &middot; Codebase behind the DataDay Monterrey workshop</div>
@@ -443,7 +452,9 @@
         <span class="tech-tag">Python</span>
         <span class="tech-tag">Mage</span>
         <span class="tech-tag">Feast</span>
-        <span class="tech-tag">Time Series</span>
+        <span class="tech-tag">DuckDB</span>
+        <span class="tech-tag">SQLite</span>
+        <span class="tech-tag">Forecasting</span>
         <span class="tech-tag">Feature Store</span>
       </div>
       <div class="card-links-row">
@@ -459,11 +470,12 @@
     </div>
 
     <!-- Data Pipeline -->
-    <div class="project-card" data-labels="data-eng,data-sci,time-series" style="--card-accent: var(--label-data-eng); animation-delay: 0.1s;">
+    <div class="project-card" data-labels="data-eng,data-sci,time-series,tutorial" style="--card-accent: var(--label-data-eng); animation-delay: 0.1s;">
       <div class="card-labels">
         <span class="card-label" style="--label-color: var(--label-data-eng-text);">Data Eng</span>
         <span class="card-label" style="--label-color: var(--label-data-sci-text);">Data Science</span>
         <span class="card-label" style="--label-color: var(--label-ts-text);">Time Series</span>
+        <span class="card-label" style="--label-color: var(--label-tutorial-text);">Tutorial</span>
       </div>
       <h3 class="card-title">High-Performance Analytics Pipeline</h3>
       <div class="card-year">2025</div>
@@ -472,12 +484,13 @@
       </p>
       <p class="card-outcome"><span>Why it matters</span> The whole pipeline, from ingestion to forecasting, runs on 30M+ rows on a single machine with no cluster.</p>
       <div class="card-tech">
-        <span class="tech-tag">Data Engineering</span>
         <span class="tech-tag">Mage</span>
         <span class="tech-tag">Polars</span>
         <span class="tech-tag">DuckDB</span>
         <span class="tech-tag">R</span>
         <span class="tech-tag">sktime</span>
+        <span class="tech-tag">Geospatial</span>
+        <span class="tech-tag">Forecasting</span>
       </div>
       <div class="card-links-row">
         <a href="https://jospablo777.github.io/mage_duckdb_pipeline/data_pipeline_mage.html" target="_blank" rel="noopener noreferrer" class="card-link">
@@ -492,11 +505,12 @@
     </div>
 
     <!-- ML Model API -->
-    <div class="project-card" data-labels="ml-eng,mlops,api" style="--card-accent: var(--label-ml); animation-delay: 0.15s;">
+    <div class="project-card" data-labels="ml-eng,mlops,api,tutorial" style="--card-accent: var(--label-ml); animation-delay: 0.15s;">
       <div class="card-labels">
         <span class="card-label" style="--label-color: var(--label-ml-text);">ML Eng</span>
         <span class="card-label" style="--label-color: var(--label-mlops-text);">MLOps</span>
         <span class="card-label" style="--label-color: var(--label-api-text);">API</span>
+        <span class="card-label" style="--label-color: var(--label-tutorial-text);">Tutorial</span>
       </div>
       <h3 class="card-title">ML Model API Microservice</h3>
       <div class="card-year">2024</div>
@@ -525,23 +539,25 @@
     </div>
 
     <!-- Iowa Liquor Sales -->
-    <div class="project-card" data-labels="data-sci,stats,time-series" style="--card-accent: var(--label-data-sci); animation-delay: 0.2s;">
+    <div class="project-card" data-labels="data-sci,stats,time-series,tutorial" style="--card-accent: var(--label-data-sci); animation-delay: 0.2s;">
       <div class="card-labels">
         <span class="card-label" style="--label-color: var(--label-data-sci-text);">Data Science</span>
         <span class="card-label" style="--label-color: var(--label-stats-text);">Stats</span>
         <span class="card-label" style="--label-color: var(--label-ts-text);">Time Series</span>
+        <span class="card-label" style="--label-color: var(--label-tutorial-text);">Tutorial</span>
       </div>
       <h3 class="card-title">Iowa Liquor Sales Analysis</h3>
       <div class="card-year">2024</div>
       <p class="card-description">
         An analysis of 12 years of Iowa liquor sales (~28M invoices). It uses STL decomposition, isolation forest anomaly detection with PyCaret, and Bayesian estimation (BEST) to test whether inventory diversity drives sales and whether the pandemic increased alcohol consumption. Built in R with Python interop through reticulate, and published as a reproducible Quarto document.
       </p>
-      <p class="card-outcome"><span>Why it matters</span> Both answers come with uncertainty estimates, and anyone can re-run the Quarto document end to end.</p>
+      <p class="card-outcome"><span>Why it matters</span> The number of different products on sale explains about 68% of the variation in monthly bottle sales per million people. Bottle sales during the pandemic were 14% higher on average than before it, and the credible interval starts at 8%. Anyone can re-run the Quarto document end to end.</p>
       <div class="card-tech">
         <span class="tech-tag">R</span>
-        <span class="tech-tag">Time Series</span>
-        <span class="tech-tag">Bayesian Inference</span>
+        <span class="tech-tag">STL Decomposition</span>
         <span class="tech-tag">Anomaly Detection</span>
+        <span class="tech-tag">Bayesian Inference</span>
+        <span class="tech-tag">PyCaret</span>
         <span class="tech-tag">Quarto</span>
       </div>
       <div class="card-links-row">
@@ -567,13 +583,15 @@
       <h3 class="card-title">Real-Time Fraud Prevention System</h3>
       <div class="card-year">2025 &middot; Work in progress</div>
       <p class="card-description">
-        A sandbox for the triage pattern, built as five microservices in Docker Compose. A FastAPI service generates transactions with the Synthetic Data Vault (SDV), Kafka streams the events, a Mage pipeline scores the transactions, and analysts review the high-risk cases in a Streamlit viewer over DuckDB.
+        A sandbox for fraud triage, built as five microservices in Docker Compose. A FastAPI service generates transactions with the Synthetic Data Vault (SDV), Kafka streams the events, a Mage pipeline scores the transactions, and analysts review the high-risk cases in a Streamlit viewer over DuckDB.
       </p>
       <p class="card-outcome"><span>Why it matters</span> I use it to test queue prioritization end to end. It is still in development.</p>
       <div class="card-tech">
         <span class="tech-tag">Kafka</span>
+        <span class="tech-tag">Streaming</span>
         <span class="tech-tag">Mage</span>
         <span class="tech-tag">FastAPI</span>
+        <span class="tech-tag">SDV</span>
         <span class="tech-tag">Docker Compose</span>
         <span class="tech-tag">Streamlit</span>
         <span class="tech-tag">DuckDB</span>
@@ -656,7 +674,7 @@
       <div class="pub-body">
         <h3 class="pub-title">Specialized landing maneuvers in Spix's disk-winged bats (<em>Thyroptera tricolor</em>) reveal linkage between roosting ecology and landing biomechanics</h3>
         <div class="pub-meta">Boerma, D., <strong>Barrantes, J.P.</strong>, Chung, C., Chaverri, G., &amp; Swartz, S. &middot; <em>Journal of Experimental Biology</em> &middot; 2019 &middot; 222(20): jeb204024</div>
-        <p class="pub-desc">High-speed videography and biomechanical analysis of landing behavior, linking roost choice to how a bat decelerates and attaches.</p>
+        <p class="pub-desc">High-speed videography and biomechanical analysis of landing behavior. The results link the roost a bat uses to how it decelerates and attaches.</p>
         <a href="https://doi.org/10.1242/jeb.204024" target="_blank" rel="noopener noreferrer" class="card-link">
           Read paper
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -696,7 +714,7 @@
 <!-- ── Skills ── -->
 <section id="skills">
   <div class="section-header">
-    <div class="section-eyebrow">Toolkit</div>
+    <div class="section-eyebrow">Tools</div>
     <h2 class="section-title">Skills &amp; Technologies</h2>
     <p class="section-subtitle">The tools I use most. The projects above show them in use.</p>
   </div>
@@ -725,8 +743,8 @@
         <div class="skill-tile"><div class="skill-cat">Gradient boosting</div>CatBoost / Scikit-Learn</div>
         <div class="skill-tile"><div class="skill-cat">Deep learning</div>PyTorch</div>
         <div class="skill-tile"><div class="skill-cat">Forecasting</div>sktime / Time Series</div>
-        <div class="skill-tile"><div class="skill-cat">Rigor</div>Validation &amp; Error Analysis</div>
-        <div class="skill-tile"><div class="skill-cat">Trust</div>Interpretable ML</div>
+        <div class="skill-tile"><div class="skill-cat">Evaluation</div>Validation &amp; Error Analysis</div>
+        <div class="skill-tile"><div class="skill-cat">Explainability</div>Interpretable ML</div>
         <div class="skill-tile"><div class="skill-cat">Pattern</div>Human-in-the-Loop ML</div>
       </div>
     </div>
@@ -771,6 +789,7 @@
         <div class="skill-tile"><div class="skill-cat">Inference</div>Causal Inference</div>
         <div class="skill-tile"><div class="skill-cat">Design</div>Experimental Design &amp; A/B Testing</div>
         <div class="skill-tile"><div class="skill-cat">Practice</div>Uncertainty Quantification</div>
+        <div class="skill-tile"><div class="skill-cat">Simulation</div>Agent-Based Models</div>
         <div class="skill-tile"><div class="skill-cat">Communication</div>Visualization &amp; Storytelling</div>
       </div>
     </div>

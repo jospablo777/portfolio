@@ -17,7 +17,7 @@ robots.txt / sitemap.xml
 
 - **Adding a project:** copy a `.project-card` block in `#projects`. Set `data-labels`
   to a comma-separated subset of `ml-eng, data-eng, stats, data-sci, mlops, api,
-  simulation, time-series, fraud` so the filter picks it up, and set `--card-accent`
+  simulation, time-series, fraud, tutorial` so the filter picks it up, and set `--card-accent`
   to the matching label colour.
 - **Adding a filter label:** add a `--label-x` / `--label-x-text` pair to both token
   blocks in `css/styles.css`, a `.filter-btn` with the new `data-filter` value, and a
@@ -48,7 +48,7 @@ robots.txt / sitemap.xml
   hamburger at 1100px. The mobile drop-down is capped at `100svh - nav-height`
   with `overflow-y: auto`, so it does not clip the last item.
 - **Social card:** regenerate `og-cover.png` if the headline or role changes, then
-  re-scrape at LinkedIn Post Inspector / X Card Validator to bust their caches.
+  re-scrape at LinkedIn Post Inspector / X Card Validator to refresh their caches.
 
 ## Checks worth re-running after edits
 
@@ -61,7 +61,7 @@ robots.txt / sitemap.xml
 - Print (`Cmd-P` → preview): every section must be visible. `.reveal` starts at
   `opacity: 0` and only clears on scroll, so the print block force-resets it.
   Without that, printing before scrolling to the bottom yields blank sections.
-  Expect ~9 pages.
+  Expect ~10 pages.
 
 ## License
 
