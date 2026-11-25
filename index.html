@@ -367,10 +367,10 @@
   <div class="section-header">
     <div class="section-eyebrow">Portfolio</div>
     <h2 class="section-title">Selected Projects</h2>
-    <p class="section-subtitle">Open source work across ML engineering, data science, and analytics.</p>
+    <p class="section-subtitle">Open source work in ML engineering, data science, statistics, and simulation.</p>
   </div>
 
-  <div class="filter-bar" role="group" aria-label="Filter projects by discipline">
+  <div class="filter-bar" role="group" aria-label="Filter projects by topic">
     <span class="filter-hint">
       <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
       Filter
@@ -382,23 +382,61 @@
     <button class="filter-btn" type="button" aria-pressed="false" data-filter="data-sci" style="--active-color: var(--label-data-sci); --active-text: var(--label-data-sci-text);">Data Science</button>
     <button class="filter-btn" type="button" aria-pressed="false" data-filter="mlops" style="--active-color: var(--label-mlops); --active-text: var(--label-mlops-text);">MLOps</button>
     <button class="filter-btn" type="button" aria-pressed="false" data-filter="api" style="--active-color: var(--label-api); --active-text: var(--label-api-text);">API</button>
+    <button class="filter-btn" type="button" aria-pressed="false" data-filter="simulation" style="--active-color: var(--label-sim); --active-text: var(--label-sim-text);">Simulation</button>
+    <button class="filter-btn" type="button" aria-pressed="false" data-filter="time-series" style="--active-color: var(--label-ts); --active-text: var(--label-ts-text);">Time Series</button>
+    <button class="filter-btn" type="button" aria-pressed="false" data-filter="fraud" style="--active-color: var(--label-fraud); --active-text: var(--label-fraud-text);">Fraud</button>
   </div>
 
   <p class="filter-status" role="status" aria-live="polite"></p>
 
   <div class="projects-grid" id="projectsGrid">
 
+    <!-- Orus Fest beer sales simulation -->
+    <div class="project-card" data-labels="simulation,stats,data-sci" style="--card-accent: var(--label-sim); animation-delay: 0.05s;">
+      <div class="card-labels">
+        <span class="card-label" style="--label-color: var(--label-sim-text);">Simulation</span>
+        <span class="card-label" style="--label-color: var(--label-stats-text);">Stats</span>
+        <span class="card-label" style="--label-color: var(--label-data-sci-text);">Data Science</span>
+      </div>
+      <h3 class="card-title" lang="es">Cerveza sin filas en Orus Fest</h3>
+      <div class="card-year">2026 &middot; Crowd management study for Orus Fest &middot; Mexico City</div>
+      <p class="card-description">
+        At Orus Fest 2026, a music festival in Mexico City, the line for a beer took more than 40 minutes between 18:00 and 20:00. I built an agent-based simulation of the attendees, the bands, and the bar, and used it to compare ways of selling beer and how many people to put on the bar for the next edition. I calibrated the model against what we observed at the festival with approximate Bayesian computation, and I estimated the waiting times with Kaplan-Meier. The report is written in Spanish for the organizers, and it has an English version.
+      </p>
+      <p class="card-outcome"><span>Why it matters</span> About 3 people served beer in 2026. With 18 people serving from 18:00, 9 of 10 buyers in the simulation wait 4 minutes or less, and the bar sells about 3,300 more beers per night. Orus Fest also supports a shelter for homeless dogs and cats.</p>
+      <div class="card-tech">
+        <span class="tech-tag">Agent-Based Simulation</span>
+        <span class="tech-tag">Crowd Management</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">R</span>
+        <span class="tech-tag">Approximate Bayesian Computation</span>
+        <span class="tech-tag">Kaplan-Meier</span>
+        <span class="tech-tag">Quarto</span>
+      </div>
+      <div class="card-links-row">
+        <a href="https://jospablo777.github.io/orus_fest_beer_sales_simulation/" target="_blank" rel="noopener noreferrer" class="card-link">
+          Read Report
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://github.com/jospablo777/orus_fest_beer_sales_simulation" target="_blank" rel="noopener noreferrer" class="card-link">
+          GitHub
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
     <!-- Feature Store Workshop -->
-    <div class="project-card" data-labels="mlops,data-eng,ml-eng" style="--card-accent: var(--label-mlops); animation-delay: 0.05s;">
+    <div class="project-card" data-labels="mlops,data-eng,ml-eng,time-series" style="--card-accent: var(--label-mlops); animation-delay: 0.05s;">
       <div class="card-labels">
         <span class="card-label" style="--label-color: var(--label-mlops-text);">MLOps</span>
         <span class="card-label" style="--label-color: var(--label-data-eng-text);">Data Eng</span>
         <span class="card-label" style="--label-color: var(--label-ml-text);">ML Eng</span>
+        <span class="card-label" style="--label-color: var(--label-ts-text);">Time Series</span>
       </div>
       <h3 class="card-title">Time-Series Feature Store (Mage + Feast)</h3>
       <div class="card-year">2025 &middot; Codebase behind the DataDay Monterrey workshop</div>
       <p class="card-description">
-        The companion codebase for my DataDay 2025 workshop in Monterrey, Mexico: a working feature store for time-series forecasting, with Mage handling the orchestration and Feast serving point-in-time correct features for training and inference.
+        The codebase for my DataDay 2025 workshop in Monterrey, Mexico. It is a working feature store for time-series forecasting. Mage runs the orchestration, and Feast serves point-in-time correct features for training and inference.
       </p>
       <p class="card-outcome"><span>Why it matters</span> A feature joined at the wrong timestamp leaks future information into training, and nothing fails when it happens. This repository shows how to prevent that leakage when training and inference read the same features.</p>
       <div class="card-tech">
@@ -421,10 +459,11 @@
     </div>
 
     <!-- Data Pipeline -->
-    <div class="project-card" data-labels="data-eng,data-sci" style="--card-accent: var(--label-data-eng); animation-delay: 0.1s;">
+    <div class="project-card" data-labels="data-eng,data-sci,time-series" style="--card-accent: var(--label-data-eng); animation-delay: 0.1s;">
       <div class="card-labels">
         <span class="card-label" style="--label-color: var(--label-data-eng-text);">Data Eng</span>
         <span class="card-label" style="--label-color: var(--label-data-sci-text);">Data Science</span>
+        <span class="card-label" style="--label-color: var(--label-ts-text);">Time Series</span>
       </div>
       <h3 class="card-title">High-Performance Analytics Pipeline</h3>
       <div class="card-year">2025</div>
@@ -486,10 +525,11 @@
     </div>
 
     <!-- Iowa Liquor Sales -->
-    <div class="project-card" data-labels="data-sci,stats" style="--card-accent: var(--label-data-sci); animation-delay: 0.2s;">
+    <div class="project-card" data-labels="data-sci,stats,time-series" style="--card-accent: var(--label-data-sci); animation-delay: 0.2s;">
       <div class="card-labels">
         <span class="card-label" style="--label-color: var(--label-data-sci-text);">Data Science</span>
         <span class="card-label" style="--label-color: var(--label-stats-text);">Stats</span>
+        <span class="card-label" style="--label-color: var(--label-ts-text);">Time Series</span>
       </div>
       <h3 class="card-title">Iowa Liquor Sales Analysis</h3>
       <div class="card-year">2024</div>
@@ -517,11 +557,12 @@
     </div>
 
     <!-- Real-time Fraud Prevention -->
-    <div class="project-card" data-labels="ml-eng,data-eng,mlops" style="--card-accent: var(--label-ml); animation-delay: 0.25s;">
+    <div class="project-card" data-labels="ml-eng,data-eng,mlops,fraud" style="--card-accent: var(--label-ml); animation-delay: 0.25s;">
       <div class="card-labels">
         <span class="card-label" style="--label-color: var(--label-ml-text);">ML Eng</span>
         <span class="card-label" style="--label-color: var(--label-data-eng-text);">Data Eng</span>
         <span class="card-label" style="--label-color: var(--label-mlops-text);">MLOps</span>
+        <span class="card-label" style="--label-color: var(--label-fraud-text);">Fraud</span>
       </div>
       <h3 class="card-title">Real-Time Fraud Prevention System</h3>
       <div class="card-year">2025 &middot; Work in progress</div>
@@ -657,7 +698,7 @@
   <div class="section-header">
     <div class="section-eyebrow">Toolkit</div>
     <h2 class="section-title">Skills &amp; Technologies</h2>
-    <p class="section-subtitle">The tools I reach for most. The projects above show them in use.</p>
+    <p class="section-subtitle">The tools I use most. The projects above show them in use.</p>
   </div>
 
   <div class="skills-grid">

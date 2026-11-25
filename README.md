@@ -16,27 +16,31 @@ robots.txt / sitemap.xml
 ## Editing notes
 
 - **Adding a project:** copy a `.project-card` block in `#projects`. Set `data-labels`
-  to a comma-separated subset of `ml-eng, data-eng, stats, data-sci, mlops, api`
-  so the filter picks it up, and set `--card-accent` to the matching label colour.
-- **Themes:** dark is the default for **every** visitor; light lives in the
+  to a comma-separated subset of `ml-eng, data-eng, stats, data-sci, mlops, api,
+  simulation, time-series, fraud` so the filter picks it up, and set `--card-accent`
+  to the matching label colour.
+- **Adding a filter label:** add a `--label-x` / `--label-x-text` pair to both token
+  blocks in `css/styles.css`, a `.filter-btn` with the new `data-filter` value, and a
+  `.card-label` on each card that carries it.
+- **Themes:** dark is the default for every visitor; light lives in the
   `:root[data-theme='light']` block and is opt-in through the nav toggle, then
-  remembered in `localStorage.theme`. The OS `prefers-color-scheme` is ignored on
-  purpose, so the site always opens dark. The inline script in `<head>` applies the
-  stored choice *before first paint*, so a visitor who picked light sees no flash
+  remembered in `localStorage.theme`. The OS `prefers-color-scheme` is ignored,
+  so the site always opens dark. The inline script in `<head>` applies the
+  stored choice before first paint, so a visitor who picked light sees no flash
   of dark. Keep it inline and keep it first. Without JS the site stays dark, same
-  as the default. Any new colour needs a value in **both** token blocks.
+  as the default. Any new colour needs a value in both token blocks.
 - **Colours:** all tokens live at the top of `css/styles.css`, in two blocks (dark,
   light). Two variants per accent: `--label-x` for fills, rules and 3px accents;
-  `--label-x-text` for anything you actually read. The plain variants fail WCAG AA
+  `--label-x-text` for text. The plain variants fail WCAG AA
   as small text (brand red is 3.2:1 on `#1a1a1a`; `--label-stats` purple is 3.0:1).
   A label's own 12-16% tint darkens the surface under it, so check text
-  against the *composited* background, not the card colour. That is what pushed
-  the light-theme labels down to values like `#0c6858`.
+  against the composited background. That is why
+  the light-theme labels are as dark as `#0c6858`.
 - **Email:** assembled at runtime in `js/main.js` to keep it out of the HTML source
   for scrapers. Update the `u` and `d` variables there.
-- **Resume:** the filename is deliberately descriptive so it stays identifiable in a
+- **Resume:** the filename is descriptive so it stays identifiable in a
   recruiter's downloads folder. When the year rolls over, rename the PDF and update
-  **four** `href`s. Grep for `resume`: nav button (opens in a tab for reading),
+  four `href`s. Grep for `resume`: nav button (opens in a tab for reading),
   hero CTA and contact button (both `download`), experience footnote.
 - **Adding a nav link:** add the `<li>`, then re-measure the nav breakpoints in
   `css/styles.css` (section 11). With eight links the desktop nav needs ~1220px at
@@ -48,8 +52,8 @@ robots.txt / sitemap.xml
 
 ## Checks worth re-running after edits
 
-- Contrast: small text should hit 4.5:1 **in both themes**, measured against the
-  surface it actually sits on (page, card, or its own tint).
+- Contrast: small text should hit 4.5:1 in both themes, measured against the
+  surface it sits on (page, card, or its own tint).
 - Keyboard: first Tab should reveal the skip link; filter buttons announce counts
   via the `.filter-status` live region; Escape closes the mobile menu.
 - Mobile: no horizontal overflow at 390px. Chrome headless clamps its viewport to

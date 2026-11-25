@@ -6,7 +6,7 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
 
 /* ── Theme switch ──────────────────────────────
    Dark is the default for every visitor. The inline script in <head> applies it
-   before first paint; the OS `prefers-color-scheme` is deliberately ignored.
+   before first paint; the OS `prefers-color-scheme` is ignored.
    This only handles toggling to light and remembering that choice. */
 (function () {
   const root = document.documentElement;

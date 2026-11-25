@@ -61,6 +61,9 @@
   --label-mlops: #e67e22;     --label-mlops-text: #e89a3c;
   --label-api: #16a085;       --label-api-text: #1abc9c;
   --label-talk: #f39c12;      --label-talk-text: #f0a92e;
+  --label-sim: #d6457f;       --label-sim-text: #ee7fa8;
+  --label-ts: #5b6ee1;        --label-ts-text: #8c9bf0;
+  --label-fraud: #9aa82b;     --label-fraud-text: #b9c94a;
   --label-live: #27ae60;
 
   /* Lines & elevation */
@@ -116,7 +119,7 @@
   --display-gradient: linear-gradient(135deg, var(--text-primary) 58%, #8a5a2b);
 
   /* -text values are darkened enough to clear 4.5:1 even against their own
-     12-16% tint, which is the surface they actually sit on. */
+     12-16% tint, which is the surface they sit on. */
   --label-ml: #b03225;        --label-ml-text: #a52d21;
   --label-data-eng: #1f6fa8;  --label-data-eng-text: #196293;
   --label-stats: #7a3a9c;     --label-stats-text: #6b2d8f;
@@ -124,6 +127,9 @@
   --label-mlops: #c26a12;     --label-mlops-text: #8e4d0f;
   --label-api: #128972;       --label-api-text: #0c6858;
   --label-talk: #c07d09;      --label-talk-text: #845308;
+  --label-sim: #b8326a;       --label-sim-text: #9c2558;
+  --label-ts: #4453c4;        --label-ts-text: #3a47ad;
+  --label-fraud: #6f7a14;     --label-fraud-text: #56600e;
   --label-live: #1a7a45;
 
   --border-subtle: rgba(28, 25, 23, 0.1);
@@ -746,7 +752,7 @@ section { padding: 5.5rem 3rem; max-width: 1200px; margin: 0 auto; }
   border-color: var(--border-active); color: var(--text-primary); background: var(--bg-tint);
 }
 /* Labels use a tint with no solid fill. A saturated fill cannot carry legible
-   text across seven hues in two themes (white on #27ae60 green is 2.0:1). The
+   text across ten hues in two themes (white on #27ae60 green is 2.0:1). The
    tint, solid border, and AA-checked text variant stay readable for every label. */
 .filter-btn.active {
   border-color: var(--active-color, var(--accent));
@@ -1010,7 +1016,7 @@ footer a:hover { color: var(--accent-text); }
   .stat-number { font-size: 13pt; }
 
   /* Keep atomic blocks together, but let long sections flow across pages.
-     page-break-inside on a whole section just strands half-empty pages. */
+     page-break-inside on a whole section strands half-empty pages. */
   section { padding: 0.75rem 0 0; max-width: none; break-inside: auto; }
   .section-header { margin-bottom: 1rem; }
   .section-title { font-size: 15pt; }
